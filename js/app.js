@@ -17,80 +17,7 @@ for (var i = 0; i < classname.length; i++) {
     classname[i].addEventListener('click', animateButton, false);
 }
 
-
-//  Another 
-const storage = (table) => {
-
-    if (!localStorage.getItem(table)) {
-        localStorage.setItem(table, JSON.stringify({}));
-    }
-
-    const get = (key = null) => {
-        let data = JSON.parse(localStorage.getItem(table));
-        return key ? data[key] : data;
-    };
-
-    const set = (key, value) => {
-        let storage = get();
-        storage[key] = value;
-        localStorage.setItem(table, JSON.stringify(storage));
-    };
-
-    const unset = (key) => {
-        let storage = get();
-        delete storage[key];
-        localStorage.setItem(table, JSON.stringify(storage));
-    };
-
-    const has = (key) => Object.keys(get()).includes(key);
-
-    return {
-        get,
-        set,
-        unset,
-        has,
-    };
-};
-
-const request = (method, path) => {
-
-    let url = document.querySelector('body').getAttribute('data-url');
-    let req = {
-        method: method,
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        }
-    };
-
-    if (url.slice(-1) == '/') {
-        url = url.slice(0, -1);
-    }
-
-    return {
-        async then(...params) {
-            return fetch(url + path, req)
-                .then((res) => res.json())
-                .then((res) => {
-                    if (res.error !== null) {
-                        throw res.error[0];
-                    }
-
-                    return res;
-                })
-                .then(...params);
-        },
-        token(token) {
-            req.headers['Authorization'] = 'Bearer ' + token;
-            return this;
-        },
-        body(body) {
-            req.body = JSON.stringify(body);
-            return this;
-        },
-    };
-};
-
+// Utily
 const util = (() => {
 
     const opacity = (nama) => {
@@ -120,6 +47,7 @@ const util = (() => {
             .replace(/'/g, '&#039;');
     };
 
+    // Copy Account Number Button
     const salin = (btn, msg = 'Tersalin', timeout = 1500) => {
         navigator.clipboard.writeText(btn.getAttribute('data-nomer'));
 
@@ -139,6 +67,7 @@ const util = (() => {
         }, timeout);
     };
 
+    // Countdown
     const timer = () => {
         let countDownDate = (new Date(document.getElementById('tampilan-waktu').getAttribute('time-data').replace(' ', 'T'))).getTime();
 
@@ -152,6 +81,7 @@ const util = (() => {
         }, 1000);
     };
 
+    // Musikkk 
     const music = (btn) => {
         if (btn.getAttribute('data-status') !== 'true') {
             btn.setAttribute('data-status', 'true');
@@ -164,6 +94,7 @@ const util = (() => {
         }
     };
 
+    // Zoom Photo
     const modal = (img) => {
         document.getElementById('show-modal-image').src = img.src;
         (new bootstrap.Modal('#modal-image')).show();
@@ -239,7 +170,7 @@ const util = (() => {
             origin: { y: 0.8 },
             zIndex: 1057
         });
-        await session.check();
+        // await session.check();
         await animation();
     };
 
@@ -313,6 +244,126 @@ const audio = (() => {
         pause: () => singleton().pause(),
     };
 })();
+
+// GET Data
+// Api url
+const api_url =
+    "https://arulajeh.my.id/api/greetings";
+
+// Defining async function
+async function getapi(url) {
+
+    // Storing response
+    const response = await fetch(url);
+
+    // Storing data in form of JSON
+    var data = await response.json();
+    console.log(data);
+    if (response) {
+        // hideloader();
+    }
+    show(data);
+}
+// Calling that async function
+getapi(api_url);
+
+// Function to hide the loader
+// function hideloader() {
+//     document.getElementById('loading').style.display = 'none';
+// }
+// Function to define innerHTML for HTML table
+function show(data) {
+    let tab =
+        `<tr>
+		<th>Name</th>
+		<th>Pesan</th>
+		<th>Kehadiran</th>
+		</tr>`;
+    // var data = JSON.parse(JSON.stringify(data))
+    // Loop to access all rows 
+    for (let r of data.data) {
+        tab += `<tr> 
+        	<td>${r.name} </td>
+        	<td>${r.message}</td>
+        	<td>${r.is_hadir}</td> 	 
+        </tr>`;
+    }
+    // Setting innerHTML as tab variable
+    document.getElementById("daftar-ucapan").innerHTML = tab;
+}
+
+//  Another 
+const storage = (table) => {
+
+    if (!localStorage.getItem(table)) {
+        localStorage.setItem(table, JSON.stringify({}));
+    }
+
+    const get = (key = null) => {
+        let data = JSON.parse(localStorage.getItem(table));
+        return key ? data[key] : data;
+    };
+
+    const set = (key, value) => {
+        let storage = get();
+        storage[key] = value;
+        localStorage.setItem(table, JSON.stringify(storage));
+    };
+
+    const unset = (key) => {
+        let storage = get();
+        delete storage[key];
+        localStorage.setItem(table, JSON.stringify(storage));
+    };
+
+    const has = (key) => Object.keys(get()).includes(key);
+
+    return {
+        get,
+        set,
+        unset,
+        has,
+    };
+};
+
+const request = (method, path) => {
+
+    let url = document.querySelector('body').getAttribute('data-url');
+    let req = {
+        method: method,
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    };
+
+    if (url.slice(-1) == '/') {
+        url = url.slice(0, -1);
+    }
+
+    return {
+        async then(...params) {
+            return fetch(url + path, req)
+                .then((res) => res.json())
+                .then((res) => {
+                    if (res.error !== null) {
+                        throw res.error[0];
+                    }
+
+                    return res;
+                })
+                .then(...params);
+        },
+        token(token) {
+            req.headers['Authorization'] = 'Bearer ' + token;
+            return this;
+        },
+        body(body) {
+            req.body = JSON.stringify(body);
+            return this;
+        },
+    };
+};
 
 const pagination = (() => {
 
@@ -739,20 +790,20 @@ const comment = (() => {
             return;
         }
 
-        // await request('GET', `/api/comment?per=${pagination.getPer()}&next=${pagination.getNext()}`)
-        //     .token(token)
-        //     .then((res) => {
-        //         if (res.code == 200) {
-        //             UCAPAN.innerHTML = null;
-        //             res.data.forEach((data) => UCAPAN.appendChild(renderCard(data)));
-        //             pagination.setResultData(res.data.length);
+        await request('GET', `/api/comment?per=${pagination.getPer()}&next=${pagination.getNext()}`)
+            .token(token)
+            .then((res) => {
+                if (res.code == 200) {
+                    UCAPAN.innerHTML = null;
+                    res.data.forEach((data) => UCAPAN.appendChild(renderCard(data)));
+                    pagination.setResultData(res.data.length);
 
-        //             if (res.data.length == 0) {
-        //                 UCAPAN.innerHTML = `<div class="h6 text-center">Tidak ada data</div>`;
-        //             }
-        //         }
-        //     })
-        //     .catch((err) => alert(`Terdapat kesalahan: ${err}`));
+                    if (res.data.length == 0) {
+                        UCAPAN.innerHTML = `<div class="h6 text-center">Tidak ada data</div>`;
+                    }
+                }
+            })
+            .catch((err) => alert(`Terdapat kesalahan: ${err}`));
     };
 
     const renderLoading = (num) => {

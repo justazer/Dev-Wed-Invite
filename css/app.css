@@ -1,233 +1,263 @@
 :root {
-    --dark-blue: #161733;
-    --very-dark-blue: #101125;
-    --black: #111111;
-    --white: #ffffff;
-    --blue: #1310aa;
-    --pink: #ff0081;
+  --dark-blue: #161733;
+  --very-dark-blue: #101125;
+  --black: #111111;
+  --white: #ffffff;
+  --blue: #1310aa;
+  --pink: #ff0081;
 }
 
 html {
-    scroll-behavior: smooth !important;
+  scroll-behavior: smooth !important;
 }
 
 body {
-    font-family: 'Josefin Sans', sans-serif !important;
-    padding: 0 !important;
-    -ms-overflow-style: none !important;
-    scrollbar-width: none !important;
+  font-family: "Josefin Sans", sans-serif !important;
+  padding: 0 !important;
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
 }
 
 body::-webkit-scrollbar {
-    display: none !important;
+  display: none !important;
 }
 
-.bottom-nav{
-    background-color: var(--dark-blue);
+.reg-word{
+  font-size: 1rem;
 }
 
-.main-nav{
-    background-color: var(--dark-blue);
+.bottom-nav {
+  background-color: var(--dark-blue);
+}
+
+.main-nav {
+  background-color: var(--dark-blue);
 }
 
 .font-esthetic {
-    font-family: 'Cookie', cursive !important;
-    color: var(--white) !important;
+  font-family: "Cookie", cursive !important;
+  color: var(--white) !important;
 }
 
 .font-arabic {
-    font-family: 'Noto Naskh Arabic', serif !important;
-    color: var(--white) !important;
+  font-family: "Noto Naskh Arabic", serif !important;
+  color: var(--white) !important;
 }
 
 .img-crop {
-    width: 14rem;
-    height: 14rem;
-    position: relative;
-    overflow: hidden;
-    border-radius: 50%;
+  width: 14rem;
+  height: 14rem;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
 }
 
-.img-crop>img {
-    display: inline;
-    margin: 0 auto;
-    height: auto;
-    width: 100%;
+.img-crop > img {
+  display: inline;
+  margin: 0 auto;
+  height: auto;
+  width: 100%;
 }
 
 .btn-music {
-    position: fixed;
-    bottom: 9vh !important;
-    right: 2vh !important;
-    z-index: 1055 !important;
+  position: fixed;
+  bottom: 9vh !important;
+  right: 2vh !important;
+  z-index: 1055 !important;
 }
 
 .loading-page {
-    position: fixed;
-    inset: 0 !important;
-    width: 100%;
-    height: 100%;
-    background-color: var(--dark-blue);
-    z-index: 1056 !important;
+  position: fixed;
+  inset: 0 !important;
+  width: 100%;
+  height: 100%;
+  background-color: var(--dark-blue);
+  z-index: 1056 !important;
 }
 
 .card-body {
-    overflow-wrap: break-word !important;
+  overflow-wrap: break-word !important;
 }
 
 .mouse-animation {
-    padding: 0.25rem 0.625rem;
-    height: 2rem;
-    border: 0.1rem solid #ffffff;
-    border-radius: 1.4rem;
-    opacity: 0.75;
-    box-sizing: content-box;
+  padding: 0.25rem 0.625rem;
+  height: 2rem;
+  border: 0.1rem solid #ffffff;
+  border-radius: 1.4rem;
+  opacity: 0.75;
+  box-sizing: content-box;
 }
 
 @keyframes scroll {
-    0% {
-        opacity: 0;
-    }
+  0% {
+    opacity: 0;
+  }
 
-    10% {
-        transform: translateY(0);
-        opacity: 1;
-    }
+  10% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 
-    100% {
-        transform: translateY(1rem);
-        opacity: 0;
-    }
+  100% {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
 }
 
-.mouse-animation>.scroll-animation {
-    width: 0.25rem;
-    height: 0.625rem;
-    border-radius: 25%;
-    background-color: #ffffff;
-    animation-name: scroll;
-    animation-duration: 2.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
+.mouse-animation > .scroll-animation {
+  width: 0.25rem;
+  height: 0.625rem;
+  border-radius: 25%;
+  background-color: #ffffff;
+  animation-name: scroll;
+  animation-duration: 2.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }
 
 @keyframes spin-icon {
-    from {
-        transform: rotate(0deg);
-    }
+  from {
+    transform: rotate(0deg);
+  }
 
-    to {
-        transform: rotate(360deg);
-    }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .spin-button {
-    animation: spin-icon 5s linear infinite;
+  animation: spin-icon 5s linear infinite;
 }
 
 .dark-section {
-    background-color: var(--very-dark-blue);
-    margin-top: -0.5rem;
-    margin-bottom: -0.5rem;
+  background-color: var(--very-dark-blue);
+  margin-top: -0.5rem;
+  margin-bottom: -0.5rem;
 }
 
 footer {
-    background-color: var(--very-dark-blue) !important;
-    margin-top: -0.5rem;
-    padding-bottom: 5rem;
+  background-color: var(--very-dark-blue) !important;
+  margin-top: -0.5rem;
+  padding-bottom: 5rem;
 }
 
 /* Confetti */
 .confetti-button {
-    display: inline-block;
-    -webkit-appearance: none;
-    appearance: none;
-    background-color: var(--white);
-    border: none;
-    cursor: pointer;
-    position: relative;
-    transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
-    box-shadow: 0 2px 25px rgba(255, 255, 255, 0.5);
+  display: inline-block;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: var(--white);
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+  box-shadow: 0 2px 25px rgba(255, 255, 255, 0.5);
 }
 
 .confetti-button:focus {
-    outline: 0;
+  outline: 0;
 }
 
 .confetti-button:hover {
-    background-color: var(--dark-blue);
-    color: var(--white);
+  background-color: var(--dark-blue);
+  color: var(--white);
 }
 
 .confetti-button:before,
 .confetti-button:after {
-    position: absolute;
-    content: '';
-    display: block;
-    width: 140%;
-    height: 100%;
-    left: -20%;
-    z-index: -1000;
-    transition: all ease-in-out 0.5s;
-    background-repeat: no-repeat;
+  position: absolute;
+  content: "";
+  display: block;
+  width: 140%;
+  height: 100%;
+  left: -20%;
+  z-index: -1000;
+  transition: all ease-in-out 0.5s;
+  background-repeat: no-repeat;
 }
 
 .confetti-button:before {
-    display: none;
-    top: -75%;
-    background-image: radial-gradient(circle, var(--white) 20%, transparent 20%), radial-gradient(circle, transparent 20%, var(--white) 20%, transparent 30%), radial-gradient(circle, var(--white) 20%, transparent 20%), radial-gradient(circle, var(--white) 20%, transparent 20%), radial-gradient(circle, transparent 10%, var(--white) 15%, transparent 20%), radial-gradient(circle, var(--white) 20%, transparent 20%), radial-gradient(circle, var(--white) 20%, transparent 20%), radial-gradient(circle, var(--white) 20%, transparent 20%), radial-gradient(circle, var(--white) 20%, transparent 20%);
-    background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
+  display: none;
+  top: -75%;
+  background-image: radial-gradient(circle, var(--white) 20%, transparent 20%),
+    radial-gradient(circle, transparent 20%, var(--white) 20%, transparent 30%),
+    radial-gradient(circle, var(--white) 20%, transparent 20%),
+    radial-gradient(circle, var(--white) 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, var(--white) 15%, transparent 20%),
+    radial-gradient(circle, var(--white) 20%, transparent 20%),
+    radial-gradient(circle, var(--white) 20%, transparent 20%),
+    radial-gradient(circle, var(--white) 20%, transparent 20%),
+    radial-gradient(circle, var(--white) 20%, transparent 20%);
+  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
+    10% 10%, 18% 18%;
 }
 
 .confetti-button:after {
-    display: none;
-    bottom: -75%;
-    background-image: radial-gradient(circle, var(--white) 20%, transparent 20%), radial-gradient(circle, var(--white) 20%, transparent 20%), radial-gradient(circle, transparent 10%, var(--white)1 15%, transparent 20%), radial-gradient(circle, var(--white) 20%, transparent 20%), radial-gradient(circle, var(--white) 20%, transparent 20%), radial-gradient(circle, var(--white) 20%, transparent 20%), radial-gradient(circle, var(--white) 20%, transparent 20%);
-    background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
+  display: none;
+  bottom: -75%;
+  background-image: radial-gradient(circle, var(--white) 20%, transparent 20%),
+    radial-gradient(circle, var(--white) 20%, transparent 20%),
+    radial-gradient(
+      circle,
+      transparent 10%,
+      var(--white) 1 15%,
+      transparent 20%
+    ),
+    radial-gradient(circle, var(--white) 20%, transparent 20%),
+    radial-gradient(circle, var(--white) 20%, transparent 20%),
+    radial-gradient(circle, var(--white) 20%, transparent 20%),
+    radial-gradient(circle, var(--white) 20%, transparent 20%);
+  background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
 }
 
 .confetti-button:active {
-    transform: scale(0.9);
-    background-color: var(--white);
-    box-shadow: 0 2px 25px rgba(255, 255, 255, 0.2);
+  transform: scale(0.9);
+  background-color: var(--white);
+  box-shadow: 0 2px 25px rgba(255, 255, 255, 0.2);
 }
 
 .confetti-button.animate:before {
-    display: block;
-    animation: topBubbles ease-in-out 0.75s forwards;
+  display: block;
+  animation: topBubbles ease-in-out 0.75s forwards;
 }
 
 .confetti-button.animate:after {
-    display: block;
-    animation: bottomBubbles ease-in-out 0.75s forwards;
+  display: block;
+  animation: bottomBubbles ease-in-out 0.75s forwards;
 }
 
 @keyframes topBubbles {
-    0% {
-        background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
-    }
+  0% {
+    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
+      40% 90%, 55% 90%, 70% 90%;
+  }
 
-    50% {
-        background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%;
-    }
+  50% {
+    background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%,
+      50% 50%, 65% 20%, 90% 30%;
+  }
 
-    100% {
-        background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
-        background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
-    }
+  100% {
+    background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%,
+      50% 40%, 65% 10%, 90% 20%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
 }
 
 @keyframes bottomBubbles {
-    0% {
-        background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 70% -10%, 70% 0%;
-    }
+  0% {
+    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%,
+      70% -10%, 70% 0%;
+  }
 
-    50% {
-        background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;
-    }
+  50% {
+    background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%,
+      105% 0%;
+  }
 
-    100% {
-        background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
-        background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
-    }
+  100% {
+    background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%,
+      110% 10%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
 }
