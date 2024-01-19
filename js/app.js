@@ -252,40 +252,90 @@ const audio = (() => {
 // API OM Sahrul
 const api_url = "https://arulajeh.my.id/api/greetings";
 
+const pagination = {
+  page: 1,
+  total_page: 0,
+  total_data: 0,
+};
+
+const prevButton = document.getElementById("previous");
+const nextButton = document.getElementById("next");
+const pageNumber = document.getElementById("page");
+
 function getGreetingsData() {
-  fetch(api_url)
+  fetch(api_url, {
+    headers: {
+      "Content-Type": "application/json",
+      page: pagination.page,
+    },
+  })
     .then((response) => response.json()) // Assuming JSON response
     .then((data) => {
-      // Update the HTML content with the fetched data
-      const d = data.data[0];
-      console.log(d);
-      const nameContainer = document.getElementById("span-one");
-      nameContainer.innerHTML = `${d.name}`; // Replace with actual property from API response
-      const hadirContainer = document.getElementById("span-two");
-      hadirContainer.innerHTML = d.is_hadir ? "Hadir" : "Tidak Hadir";
-      const msgContainer = document.getElementById("span-three");
-      msgContainer.innerHTML = `${d.message}`;
-      const dateContainer = document.getElementById("span-four");
-      dateContainer.innerHTML = `${moment(d.created_at).format("DD-MM-YYYY HH:mm:ss")}`;
+      const cotainer = document.getElementById("guest-list-container");
+      let strHtml = "";
+      data.data.forEach((d) => {
+        strHtml += parseContentGreeting(d.name, d.message, d.is_hadir, d.created_at);
+      });
+      cotainer.innerHTML = strHtml;
+      pagination.page = data.pagination.page;
+      pagination.total_page = data.pagination.total_page;
+      pagination.total_data = data.pagination.total_data;
+
+      pageNumber.innerHTML = pagination.page;
+      if (pagination.page == 1) {
+        prevButton.classList.add("disabled");
+      } else {
+        prevButton.classList.remove("disabled");
+      }
+      if (pagination.page >= pagination.total_page) {
+        nextButton.classList.add("disabled");
+      } else {
+        nextButton.classList.remove("disabled");
+      }
     })
     .catch((error) => {
       console.error("Error fetching API data", error);
     });
 }
 
-getGreetingsData();
+function parseContentGreeting(name, message, isHadir, date) {
+  let strHtml = "";
+  strHtml += `
+    <div class="shadow p-3 mb-3 rounded">
+    <div
+      class="d-flex flex-wrap justify-content-between align-items-center"
+      id="apiData1"
+    >
+    <!-- Name -->
+    <span class="col-5 gs-c" id="span-one">${name}</span>
+    <!-- Status -->
+      <span class="col-3 gs-c" id="span-two">${isHadir ? "Hadir" : "Tidak Hadir"}</span>
+    </div>
+    <div
+      class="d-flex flex-wrap justify-content-between align-items-center"
+      id="apiData2"
+    >
+      <!-- Message -->
+      <span class="col-6 gs-c" id="span-three">${message}</span>
+      <!-- Timestamp -->
+      <span class="col-12 gs-c" id="span-four">${moment(date).format("DD-MM-YYYY HH:mm:ss")}</span>
+    </div>
+    </div>
+    `;
+  return strHtml;
+}
 
 // POST
 document.getElementById("send-msg").addEventListener("click", () => {
-  const formName = document.getElementById("form-name").value;
-  const formAttend = document.getElementById("form-attend").value;
-  const formMessage = document.getElementById("form-message").value;
+  const formName = document.getElementById("form-name");
+  const formAttend = document.getElementById("form-attend");
+  const formMessage = document.getElementById("form-message");
   // Data to be sent in the POST request
   const postData = {
     // Your POST data properties here
-    name: formName,
-    is_hadir: formAttend == "1" ? true : false,
-    message: formMessage,
+    name: formName.value,
+    is_hadir: formAttend.value == "1" ? true : false,
+    message: formMessage.value,
   };
 
   // Configuration for the POST request
@@ -301,10 +351,66 @@ document.getElementById("send-msg").addEventListener("click", () => {
   fetch(api_url, requestOptions)
     .then((response) => response.json()) // Assuming JSON response
     .then((data) => {
-      //   console.log(data);
+      formName.value = "";
+      formAttend.value = "";
+      formMessage.value = "";
       getGreetingsData();
     })
     .catch((error) => {
       console.error("Error sending or receiving API data", error);
     });
+});
+
+function checkInput() {
+  const formName = document.getElementById("form-name");
+  const formAttend = document.getElementById("form-attend");
+  const formMessage = document.getElementById("form-message");
+
+  if (
+    formName.value == "" ||
+    formAttend.value == "" ||
+    formMessage.value == "" ||
+    formAttend.value == "0"
+  ) {
+    document.getElementById("send-msg").disabled = true;
+  } else {
+    document.getElementById("send-msg").disabled = false;
+  }
+}
+
+function paginationNext() {
+  if (pagination.page >= pagination.total_page) return;
+  pagination.page += 1;
+  getGreetingsData();
+}
+
+function paginationPrevious() {
+  if (pagination.page <= 1) return;
+  pagination.page -= 1;
+  getGreetingsData();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const formName = document.getElementById("form-name");
+  const formAttend = document.getElementById("form-attend");
+  const formMessage = document.getElementById("form-message");
+
+  getGreetingsData();
+
+  nextButton.addEventListener("click", () => {
+    paginationNext();
+  });
+  prevButton.addEventListener("click", () => {
+    paginationPrevious();
+  });
+
+  formName.addEventListener("keyup", () => {
+    checkInput();
+  });
+  formAttend.addEventListener("change", () => {
+    checkInput();
+  });
+  formMessage.addEventListener("keyup", () => {
+    checkInput();
+  });
 });

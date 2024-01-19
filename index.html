@@ -719,7 +719,7 @@
             </div>
             <div class="d-flex">
               <button
-                class="flex-fill btn btn-light btn-sm rounded-3 shadow m-1 confetti-button"
+                class="flex-fill btn btn-light btn-sm rounded-3 shadow m-1 confetti-button" disabled
                 id="send-msg"
               >
                 Kirim<i class="fa-solid fa-paper-plane ms-1"></i>
@@ -732,21 +732,21 @@
               <div class="bg-light shadow p-3 m-0 rounded-4" id="guest-list-container">
                 <div
                   class="d-flex flex-wrap justify-content-between align-items-center"
-                  id="apiData"
+                  id="apiData1"
                 >
-                  <span class="col-5 gs-c" id="span-one">Name</span>
                   <!-- Name -->
-                  <span class="col-3 gs-c" id="span-two">Status</span>
+                  <span class="col-5 gs-c" id="span-one">Name</span>
                   <!-- Status -->
+                  <span class="col-3 gs-c" id="span-two">Status</span>
                 </div>
                 <div
                   class="d-flex flex-wrap justify-content-between align-items-center"
-                  id="apiData"
+                  id="apiData2"
                 >
-                  <span class="col-6 gs-c" id="span-three">Message</span>
                   <!-- Message -->
-                  <span class="col-12 gs-c" id="span-four">Timestamp</span>
+                  <span class="col-6 gs-c" id="span-three">Message</span>
                   <!-- Timestamp -->
+                  <span class="col-12 gs-c" id="span-four">Timestamp</span>
                 </div>
               </div>
             </div>
@@ -756,7 +756,6 @@
               <li class="page-item disabled" id="previous">
                 <button
                   class="page-link"
-                  onclick="pagination.previous(this)"
                   aria-label="Sebelumnya"
                 >
                   <i class="fa-solid fa-circle-left me-1"></i>Sebelumnya
@@ -766,7 +765,7 @@
                 <span class="page-link text-light" id="page">1</span>
               </li>
               <li class="page-item" id="next">
-                <button class="page-link" onclick="pagination.next(this)" aria-label="Selanjutnya">
+                <button class="page-link" aria-label="Selanjutnya">
                   Selanjutnya<i class="fa-solid fa-circle-right ms-1"></i>
                 </button>
               </li>
