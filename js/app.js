@@ -258,7 +258,7 @@ fetch(api_url)
         }
         for (let a of data.data) {
             const apiDataContainer = document.getElementById('span-two');
-            apiDataContainer.innerHTML = `${a.is_hadir}`;
+            apiDataContainer.innerHTML = `${a.is_hadir}` == true ? "Hadir" : "Tidak Hadir";
         }
         for (let a of data.data) {
             const apiDataContainer = document.getElementById('span-three');
