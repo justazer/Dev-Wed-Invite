@@ -112,7 +112,7 @@ const util = (() => {
         div.classList.add('m-2');
         div.innerHTML = `<p class="mt-0 mb-1 mx-0 p-0 text-light">Kepada Yth Bapak/Ibu/Saudara/i</p><h2 class="text-light">${escapeHtml(name)}</h2>`;
 
-        document.getElementById('form-nama').value = name;
+        document.getElementById('form-name').value = name;
         document.getElementById('nama-tamu').appendChild(div);
     };
 
@@ -246,6 +246,7 @@ const audio = (() => {
 // API OM Sahrul
 const api_url = "https://arulajeh.my.id/api/greetings";
 
+// GET
 fetch(api_url)
     .then(response => response.json()) // Assuming JSON response
     .then(data => {
@@ -271,3 +272,42 @@ fetch(api_url)
     .catch(error => {
         console.error('Error fetching API data', error);
     });
+
+// POST
+document.getElementById('send-msg').addEventListener('click', () => {
+    const formName = document.getElementById('form-name');
+    // apiDataContainer.innerHTML = `${a.is_hadir}`;
+    const formAttend = document.getElementById('form-attend');
+    // apiDataContainer.innerHTML = `${a.is_hadir}`;
+    const formMessage = document.getElementById('form-message');
+    // apiDataContainer.innerHTML = `${a.is_hadir}`;
+    // Data to be sent in the POST request
+    const postData = {
+        // Your POST data properties here
+        name: formName,
+        is_hadir: formAttend,
+        message: formMessage,
+    };
+
+    // Configuration for the POST request
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+            // Add any required headers here
+        },
+        body: JSON.stringify(postData)
+    };
+
+    // Make the POST request to the API
+    // fetch(api_url, requestOptions)
+    //     .then(response => response.json()) // Assuming JSON response
+    //     .then(data => {
+    //         // Update the HTML content with the fetched data
+    //         const apiResponseContainer = document.getElementById('api-response-container');
+    //         apiResponseContainer.innerHTML = `<p>API Response: ${data.data}</p>`; // Replace with actual property from API response
+    //     })
+    //     .catch(error => {
+    //         console.error('Error sending or receiving API data', error);
+    //     });
+});

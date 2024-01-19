@@ -784,7 +784,7 @@
               <input
                 type="text"
                 class="form-control shadow-sm"
-                id="form-nama"
+                id="form-name"
                 placeholder="Isikan Nama Anda"
               />
             </div>
@@ -795,7 +795,7 @@
                 id="label-kehadiran"
                 >Kehadiran</label
               >
-              <select class="form-select shadow-sm" id="form-kehadiran">
+              <select class="form-select shadow-sm" id="form-attend">
                 <option value="0" selected>Konfirmasi Kehadiran</option>
                 <option value="1">Hadir</option>
                 <option value="2">Berhalangan</option>
@@ -805,33 +805,15 @@
               <label for="form-pesan" class="form-label">Ucapan & Doa</label>
               <textarea
                 class="form-control shadow-sm"
-                id="form-pesan"
+                id="form-message"
                 rows="4"
                 placeholder="Tulis Ucapan & Doa"
               ></textarea>
             </div>
-
             <div class="d-flex">
               <button
-                class="flex-fill btn btn-danger btn-sm rounded-3 shadow m-1"
-                style="display: none"
-                onclick="comment.batal()"
-                id="batal"
-              >
-                Batal<i class="fa-solid fa-xmark ms-1"></i>
-              </button>
-              <button
-                class="flex-fill btn btn-warning btn-sm rounded-3 shadow m-1"
-                style="display: none"
-                onclick="comment.ubah()"
-                id="ubah"
-              >
-                Ubah<i class="fa-solid fa-pen-to-square ms-1"></i>
-              </button>
-              <button
                 class="flex-fill btn btn-light btn-sm rounded-3 shadow m-1 confetti-button"
-                onclick="comment.kirim()"
-                id="kirim"
+                id="send-msg"
               >
                 Kirim<i class="fa-solid fa-paper-plane ms-1"></i>
               </button>
