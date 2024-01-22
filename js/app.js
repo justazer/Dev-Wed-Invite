@@ -298,7 +298,38 @@ function getGreetingsData() {
     });
 }
 
-function parseContentGreeting(name, message, isHadir, date) {
+// Time Remains
+const parseTimeAgo = (time) => {
+  const d = new Date(time).getTime();
+  const now = new Date().getTime();
+  const diff = (now - d) / 1000;
+
+  const years = Math.floor(diff / 31536000);
+  const months = Math.floor(diff / 2592000);
+  const days = Math.floor(diff / 86400);
+  const hours = Math.floor((diff % 86400) / 3600);
+  const minutes = Math.floor((diff % 3600) / 60);
+  const seconds = Math.floor(diff % 60);
+
+  // console.log(years, months, days, hours, minutes, seconds);
+
+  if (minutes <= 0) {
+    return `${seconds} Detik yang lalu`;
+  } else if (hours <= 0) {
+    return `${minutes} Menit yang lalu`;
+  } else if (days <= 0) {
+    return `${hours} Jam yang lalu`;
+  } else if (months <= 0) {
+    return `${days} Hari yang lalu`;
+  } else if (years <= 0) {
+    return `${months} Bulan yang lalu`;
+  } else {
+    return `${years} Tahun yang lalu`;
+  }
+}
+
+// Content Comment
+const parseContentGreeting = (name, message, isHadir, date) => {
   let strHtml = "";
   strHtml += `
     <div class="shadow p-3 mb-3 rounded">
@@ -309,7 +340,7 @@ function parseContentGreeting(name, message, isHadir, date) {
     <!-- Name -->
     <span class="text-truncate m-0 p-0 gs-c" id="span-one">${name}</span>
     <!-- Status -->
-      <span class="text-truncate m-0 p-0 gs-c" id="span-two">${isHadir ? '<i class="fa-solid fa-circle-check text-success"></i>'  :  '<i class="fa-solid fa-circle-xmark text-danger"></i>'}</span>
+      <span class="text-truncate m-0 p-0 gs-c" id="span-two">${isHadir ? '<i class="fa-solid fa-circle-check text-success"></i>' : '<i class="fa-solid fa-circle-xmark text-danger"></i>'}</span>
     </div>
     <div
       class="d-flex flex-wrap justify-content-between align-items-center"
@@ -318,7 +349,7 @@ function parseContentGreeting(name, message, isHadir, date) {
       <!-- Message -->
       <span class="m-0 p-0 gs-c" id="span-three">${message}</span>
       <!-- Timestamp -->
-      <span class="col-12 gs-c" id="span-four">${moment(date).format("MMM D, YYYY h:mm A")}</span>
+      <span class="col-12 gs-c" id="span-four">${parseTimeAgo(date)}</span>
     </div>
     </div>
     `;
