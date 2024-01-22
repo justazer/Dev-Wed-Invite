@@ -22,8 +22,16 @@ body::-webkit-scrollbar {
   display: none !important;
 }
 
+.gslc{
+  width: 95%;
+}
+
 .gs-c{
   color: var(--black);
+}
+
+.gl-t{
+  text-align: center;
 }
 
 .reg-word {

@@ -303,22 +303,22 @@ function parseContentGreeting(name, message, isHadir, date) {
   strHtml += `
     <div class="shadow p-3 mb-3 rounded">
     <div
-      class="d-flex flex-wrap justify-content-between align-items-center"
+      class="flex-wrap justify-content-between align-items-center"
       id="apiData1"
     >
     <!-- Name -->
-    <span class="col-5 gs-c" id="span-one">${name}</span>
+    <span class="text-truncate m-0 p-0 gs-c" id="span-one">${name}</span>
     <!-- Status -->
-      <span class="col-3 gs-c" id="span-two">${isHadir ? "Hadir" : "Tidak Hadir"}</span>
+      <span class="text-truncate m-0 p-0 gs-c" id="span-two">${isHadir ? '<i class="fa-solid fa-circle-check text-success"></i>'  :  '<i class="fa-solid fa-circle-xmark text-danger"></i>'}</span>
     </div>
     <div
       class="d-flex flex-wrap justify-content-between align-items-center"
       id="apiData2"
     >
       <!-- Message -->
-      <span class="col-6 gs-c" id="span-three">${message}</span>
+      <span class="m-0 p-0 gs-c" id="span-three">${message}</span>
       <!-- Timestamp -->
-      <span class="col-12 gs-c" id="span-four">${moment(date).format("DD-MM-YYYY HH:mm:ss")}</span>
+      <span class="col-12 gs-c" id="span-four">${moment(date).format("MMM D, YYYY h:mm A")}</span>
     </div>
     </div>
     `;

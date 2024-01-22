@@ -727,15 +727,15 @@
             </div>
           </div>
           <div class="rounded-4 mt-4 mb-2">
-            <h2>Guest List</h2>
-            <div class="mb-3">
-              <div class="bg-light shadow p-3 m-0 rounded-4" id="guest-list-container">
+            <h2 class="gl-t">Guest List</h2>
+            <div class="mb-3 d-flex justify-content-center">
+              <div class="bg-light shadow p-3 m-0 rounded-4 gslc" id="guest-list-container">
                 <div
                   class="d-flex flex-wrap justify-content-between align-items-center"
                   id="apiData1"
                 >
                   <!-- Name -->
-                  <span class="col-5 gs-c" id="span-one">Name</span>
+                  <span class="text-truncate m-0 p-0 gs-c" id="span-one">Name</span>
                   <!-- Status -->
                   <span class="col-3 gs-c" id="span-two">Status</span>
                 </div>
@@ -747,6 +747,7 @@
                   <span class="col-6 gs-c" id="span-three">Message</span>
                   <!-- Timestamp -->
                   <span class="col-12 gs-c" id="span-four">Timestamp</span>
+                  <span id="time-ago">Time Ago</span>
                 </div>
               </div>
             </div>
@@ -821,7 +822,7 @@
             <div class="col-auto">
               <small>
                 <i class="fa-brands fa-instagram me-1"></i
-                ><a target="instagram" href="https://www.instagram.com/rezabaharsyah/"
+                ><a target="instagram" href="https://www.instagram.com/rezabaharsyah/" class="text-decoration-none"
                   >rezafbaharsyah</a
                 >
               </small>
