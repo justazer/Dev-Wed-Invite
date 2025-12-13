@@ -9,7 +9,7 @@ services:
     networks:
       - proxy-network
     volumes:
-      - ./:/usr/share/nginx/html:ro
+      - ./src:/usr/share/nginx/html:ro
 
 networks:
   proxy-network:
