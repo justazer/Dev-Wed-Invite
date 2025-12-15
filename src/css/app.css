@@ -65,9 +65,9 @@ body::-webkit-scrollbar {
 }
 
 .img-crop > img {
-  display: inline;
+  display: block;
   margin: 0 auto;
-  height: auto;
+  height: 100%;
   width: 100%;
 }
 
