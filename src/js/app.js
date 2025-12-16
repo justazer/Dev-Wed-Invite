@@ -26,7 +26,7 @@ const util = (() => {
     clear = setInterval(() => {
       if (op >= 0) {
         nm.style.opacity = op.toString();
-        op -= 0.025;
+        op -= 10 //0.025;
       } else {
         clearInterval(clear);
         clear = null;

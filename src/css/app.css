@@ -1,6 +1,6 @@
 :root {
   --dark-blue: #161733;
-  --very-dark-blue: #101125;
+  --very-dark-blue: #0c1163;
   --black: #111111;
   --white: #ffffff;
   --blue: #1310aa;
@@ -153,6 +153,14 @@ footer {
   background-color: var(--very-dark-brown) !important;
   margin-top: -0.5rem;
   padding-bottom: 5rem;
+}
+
+.pink-object {
+  color: var(--pink) !important;
+}
+
+.white-object {
+  color: var(--white) !important;
 }
 
 /* Confetti */
