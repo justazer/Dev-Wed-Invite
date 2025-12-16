@@ -5,8 +5,8 @@
   --white: #ffffff;
   --blue: #1310aa;
   --pink: #ff0081;
-  --dark-brown: #2c1400e8;
-  --very-dark-brown: #130800e8;
+  --dark-brown: #d5c2b0;
+  --very-dark-brown: #7d5b4d;
 }
 
 html {
@@ -161,6 +161,15 @@ footer {
 
 .white-object {
   color: var(--white) !important;
+}
+
+.brown-object {
+  color: var(--very-dark-brown) !important;
+}
+
+.wave-separator {
+  fill: var(--very-dark-brown) !important;
+  fill-opacity: 1;
 }
 
 /* Confetti */
