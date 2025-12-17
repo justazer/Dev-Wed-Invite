@@ -5,6 +5,7 @@
   --white: #ffffff;
   --blue: #1310aa;
   --pink: #ff0081;
+  --light-brown: #e3d4c3;
   --dark-brown: #d5c2b0;
   --very-dark-brown: #7d5b4d;
 }
@@ -163,8 +164,20 @@ footer {
   color: var(--white) !important;
 }
 
+.light-brown-object {
+  color: var(--light-brown) !important;
+}
+
 .brown-object {
   color: var(--very-dark-brown) !important;
+}
+
+.brown-obj {
+  color: var(--very-dark-brown) !important;
+}
+
+.brown-obj:hover {
+  color: var(--white) !important;
 }
 
 .wave-separator {

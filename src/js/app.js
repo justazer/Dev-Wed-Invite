@@ -178,7 +178,7 @@ const util = (() => {
   const show = () => {
     tamu();
     opacity("loading");
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 1);
   };
 
   return {
