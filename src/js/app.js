@@ -26,7 +26,7 @@ const util = (() => {
     clear = setInterval(() => {
       if (op >= 0) {
         nm.style.opacity = op.toString();
-        op -= 10 //0.025;
+        op -= 10; //0.025;
       } else {
         clearInterval(clear);
         clear = null;
@@ -68,20 +68,27 @@ const util = (() => {
   // Countdown
   const timer = () => {
     let countDownDate = new Date(
-      document.getElementById("tampilan-waktu").getAttribute("time-data").replace(" ", "T")
+      document
+        .getElementById("tampilan-waktu")
+        .getAttribute("time-data")
+        .replace(" ", "T")
     ).getTime();
 
     setInterval(() => {
       let distance = Math.abs(countDownDate - new Date().getTime());
 
-      document.getElementById("hari").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+      document.getElementById("hari").innerText = Math.floor(
+        distance / (1000 * 60 * 60 * 24)
+      );
       document.getElementById("jam").innerText = Math.floor(
         (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
       );
       document.getElementById("menit").innerText = Math.floor(
         (distance % (1000 * 60 * 60)) / (1000 * 60)
       );
-      document.getElementById("detik").innerText = Math.floor((distance % (1000 * 60)) / 1000);
+      document.getElementById("detik").innerText = Math.floor(
+        (distance % (1000 * 60)) / 1000
+      );
     }, 1000);
   };
 
@@ -104,23 +111,89 @@ const util = (() => {
     new bootstrap.Modal("#modal-image").show();
   };
 
-  const tamu = () => {
-    let name = new URLSearchParams(window.location.search).get("to");
+  // const tamu = () => {
+  //   let name = new URLSearchParams(window.location.search).get("to");
 
-    if (!name) {
-      document.getElementById("nama-tamu").remove();
-      return;
+  //   if (!name) {
+  //     document.getElementById("nama-tamu").remove();
+  //     return;
+  //   }
+
+  //   let div = document.createElement("div");
+  //   div.classList.add("m-2");
+  //   div.innerHTML = `<p class="mt-0 mb-1 mx-0 p-0 text-light">Kepada Yth Bapak/Ibu/Saudara/i</p><h2 class="text-light">${escapeHtml(
+  //     name
+  //   )}</h2>`;
+
+  //   document.getElementById("form-name").value = name;
+  //   document.getElementById("nama-tamu").appendChild(div);
+  // };
+
+const GUEST_DATA = [
+    {
+        "nama": "Rizky Ramadhan",
+        "status": "Hadir",
+        "pesan": "Selamat menempuh hidup baru! Semoga menjadi keluarga yang sakinah, mawaddah, dan warahmah.",
+        "waktu": "2 menit yang lalu"
+    },
+    {
+        "nama": "Siti Nurhaliza",
+        "status": "Hadir",
+        "pesan": "Happy Wedding! Barusan liat fotonya, cantik dan ganteng banget kalian.",
+        "waktu": "1 jam yang lalu"
+    },
+    {
+        "nama": "Budi Setiawan",
+        "status": "Tidak Hadir",
+        "pesan": "Selamat ya bro! Mohon maaf belum bisa hadir karena masih di luar kota. Titip doa terbaik!",
+        "waktu": "3 jam yang lalu"
+    },
+    {
+        "nama": "Amanda Putri",
+        "status": "Hadir",
+        "pesan": "Lancar-lancar sampai hari H ya! See you there!",
+        "waktu": "5 jam yang lalu"
     }
+];
 
-    let div = document.createElement("div");
-    div.classList.add("m-2");
-    div.innerHTML = `<p class="mt-0 mb-1 mx-0 p-0 text-light">Kepada Yth Bapak/Ibu/Saudara/i</p><h2 class="text-light">${escapeHtml(
-      name
-    )}</h2>`;
+const API_URL = 'https://api.contoh-undangan.com/get-messages';
 
-    document.getElementById("form-name").value = name;
-    document.getElementById("nama-tamu").appendChild(div);
-  };
+function loadGuestMessages() {
+    const container = document.getElementById('guest-list-container');
+    
+    //Clear container
+    container.innerHTML = '';
+
+    // GUEST_DATA / API_URL
+    GUEST_DATA.forEach(item => {
+        const messageCard = `
+            <div class="border-bottom pb-3 mb-3">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                    <span class="fw-bold text-truncate brown-object" style="max-width: 70%;">${item.nama}</span>
+                    <span class="badge ${item.status === 'Hadir' ? 'bg-success' : 'bg-secondary'} small">
+                        ${item.status}
+                    </span>
+                </div>
+                <div class="mb-2">
+                    <div class="p-2 bg-white rounded-3 border-start border-4 border-primary shadow-sm">
+                        <span style="font-style: italic; font-size: 0.9rem;" class="text-secondary brown-object">
+                            "${item.pesan}"
+                        </span>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <span class="text-muted brown-object" style="font-size: 0.7rem;">
+                        ${item.waktu}
+                    </span>
+                </div>
+            </div>
+        `;
+        container.innerHTML += messageCard;
+    });
+}
+
+
+  //ANIMATION
 
   const animation = async () => {
     const duration = 10 * 1000;
@@ -176,14 +249,14 @@ const util = (() => {
   };
 
   const show = () => {
-    tamu();
+    loadGuestMessages();
+    // tamu();
     opacity("loading");
     window.scrollTo(0, 1);
   };
 
   return {
     buka,
-    tamu,
     modal,
     music,
     salin,
@@ -206,9 +279,9 @@ const progress = (() => {
     loaded += 1;
 
     bar.style.width = Math.min((loaded / total) * 100, 100).toString() + "%";
-    info.innerText = `Now Loading... (${loaded}/${total}) [${parseInt(bar.style.width).toFixed(
-      0
-    )}%]`;
+    info.innerText = `Now Loading... (${loaded}/${total}) [${parseInt(
+      bar.style.width
+    ).toFixed(0)}%]`;
 
     if (loaded == total) {
       util.show();
@@ -231,7 +304,9 @@ const audio = (() => {
   const singleton = () => {
     if (!audio) {
       audio = new Audio();
-      audio.src = document.getElementById("music-button").getAttribute("data-url");
+      audio.src = document
+        .getElementById("music-button")
+        .getAttribute("data-url");
       audio.load();
       audio.currentTime = 0;
       audio.autoplay = true;
@@ -274,7 +349,12 @@ function getGreetingsData() {
       const cotainer = document.getElementById("guest-list-container");
       let strHtml = "";
       data.data.forEach((d) => {
-        strHtml += parseContentGreeting(d.name, d.message, d.is_hadir, d.created_at);
+        strHtml += parseContentGreeting(
+          d.name,
+          d.message,
+          d.is_hadir,
+          d.created_at
+        );
       });
       cotainer.innerHTML = strHtml;
       pagination.page = data.pagination.page;
@@ -326,7 +406,7 @@ const parseTimeAgo = (time) => {
   } else {
     return `${years} Tahun yang lalu`;
   }
-}
+};
 
 // Content Comment
 const parseContentGreeting = (name, message, isHadir, date) => {
@@ -340,7 +420,11 @@ const parseContentGreeting = (name, message, isHadir, date) => {
     <!-- Name -->
     <span class="text-truncate m-0 p-0 gs-c" id="span-one">${name}</span>
     <!-- Status -->
-      <span class="text-truncate m-0 p-0 gs-c" id="span-two">${isHadir ? '<i class="fa-solid fa-circle-check text-success"></i>' : '<i class="fa-solid fa-circle-xmark text-danger"></i>'}</span>
+      <span class="text-truncate m-0 p-0 gs-c" id="span-two">${
+        isHadir
+          ? '<i class="fa-solid fa-circle-check text-success"></i>'
+          : '<i class="fa-solid fa-circle-xmark text-danger"></i>'
+      }</span>
     </div>
     <div
       class="d-flex flex-wrap justify-content-between align-items-center"
@@ -354,7 +438,7 @@ const parseContentGreeting = (name, message, isHadir, date) => {
     </div>
     `;
   return strHtml;
-}
+};
 
 // POST
 document.getElementById("send-msg").addEventListener("click", () => {
