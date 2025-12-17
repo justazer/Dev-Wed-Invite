@@ -16,6 +16,16 @@ for (var i = 0; i < classname.length; i++) {
   classname[i].addEventListener("click", animateButton, false);
 }
 
+const pagination = {
+  page: 1,
+  total_page: 0,
+  total_data: 0,
+};
+
+const prevButton = document.getElementById("previous");
+const nextButton = document.getElementById("next");
+const pageNumber = document.getElementById("page");
+
 // Utily
 const util = (() => {
   const opacity = (nama) => {
@@ -129,44 +139,61 @@ const util = (() => {
   //   document.getElementById("nama-tamu").appendChild(div);
   // };
 
-const GUEST_DATA = [
-    {
-        "nama": "Rizky Ramadhan",
-        "status": "Hadir",
-        "pesan": "Selamat menempuh hidup baru! Semoga menjadi keluarga yang sakinah, mawaddah, dan warahmah.",
-        "waktu": "2 menit yang lalu"
-    },
-    {
-        "nama": "Siti Nurhaliza",
-        "status": "Hadir",
-        "pesan": "Happy Wedding! Barusan liat fotonya, cantik dan ganteng banget kalian.",
-        "waktu": "1 jam yang lalu"
-    },
-    {
-        "nama": "Budi Setiawan",
-        "status": "Tidak Hadir",
-        "pesan": "Selamat ya bro! Mohon maaf belum bisa hadir karena masih di luar kota. Titip doa terbaik!",
-        "waktu": "3 jam yang lalu"
-    },
-    {
-        "nama": "Amanda Putri",
-        "status": "Hadir",
-        "pesan": "Lancar-lancar sampai hari H ya! See you there!",
-        "waktu": "5 jam yang lalu"
+  let GUEST_DATA = [];
+
+  async function getListMessage() {
+    try {
+      const requestOptions = {
+        method: "GET",
+        redirect: "follow"
+      };
+      const response = await fetch(`https://api-asarez.arulajeh.id/list?page=${pagination.page}&limit=10`, requestOptions)
+        .then((response) => response.json())
+        .catch((error) => console.error(error));
+      pagination.total_page = response.totalPages;
+      pagination.total_data = response.total;
+      console.log(response);
+      return response?.data || [];
+    } catch (error) {
+      console.error('Error fetching guest messages:', error);
+      return [];
     }
-];
+  }
 
-const API_URL = 'https://api.contoh-undangan.com/get-messages';
+  async function loadGuestMessages() {
+    const guestList = await getListMessage();
 
-function loadGuestMessages() {
+    // add class disabled to prevButton if on first page
+    if (pagination.page <= 1) {
+      prevButton.classList.add("disabled");
+    } else {
+      prevButton.classList.remove("disabled");
+    }
+
+    // add class disabled to nextButton if on last page
+    if (pagination.page >= pagination.total_page) {
+      nextButton.classList.add("disabled");
+    } else {
+      nextButton.classList.remove("disabled");
+    }
+    pageNumber.innerText = `Halaman ${pagination.page} dari ${pagination.total_page}`;
+
+    GUEST_DATA = guestList.map(item => {
+      return {
+        nama: item.name,
+        status: item.isAttend ? 'Hadir' : 'Tidak Hadir',
+        pesan: item.message,
+        waktu: parseTimeAgo(item.createdAt)
+      }
+    });
     const container = document.getElementById('guest-list-container');
-    
+
     //Clear container
     container.innerHTML = '';
 
     // GUEST_DATA / API_URL
     GUEST_DATA.forEach(item => {
-        const messageCard = `
+      const messageCard = `
             <div class="border-bottom pb-3 mb-3">
                 <div class="d-flex justify-content-between align-items-center mb-1">
                     <span class="fw-bold text-truncate brown-object" style="max-width: 70%;">${item.nama}</span>
@@ -188,10 +215,9 @@ function loadGuestMessages() {
                 </div>
             </div>
         `;
-        container.innerHTML += messageCard;
+      container.innerHTML += messageCard;
     });
-}
-
+  }
 
   //ANIMATION
 
@@ -263,6 +289,7 @@ function loadGuestMessages() {
     escapeHtml,
     opacity,
     show,
+    loadGuestMessages
   };
 })();
 
@@ -324,60 +351,6 @@ const audio = (() => {
   };
 })();
 
-// API OM Sahrul
-const api_url = "https://arulajeh.my.id/api/greetings";
-
-const pagination = {
-  page: 1,
-  total_page: 0,
-  total_data: 0,
-};
-
-const prevButton = document.getElementById("previous");
-const nextButton = document.getElementById("next");
-const pageNumber = document.getElementById("page");
-
-function getGreetingsData() {
-  fetch(api_url, {
-    headers: {
-      "Content-Type": "application/json",
-      page: pagination.page,
-    },
-  })
-    .then((response) => response.json()) // Assuming JSON response
-    .then((data) => {
-      const cotainer = document.getElementById("guest-list-container");
-      let strHtml = "";
-      data.data.forEach((d) => {
-        strHtml += parseContentGreeting(
-          d.name,
-          d.message,
-          d.is_hadir,
-          d.created_at
-        );
-      });
-      cotainer.innerHTML = strHtml;
-      pagination.page = data.pagination.page;
-      pagination.total_page = data.pagination.total_page;
-      pagination.total_data = data.pagination.total_data;
-
-      pageNumber.innerHTML = pagination.page;
-      if (pagination.page == 1) {
-        prevButton.classList.add("disabled");
-      } else {
-        prevButton.classList.remove("disabled");
-      }
-      if (pagination.page >= pagination.total_page) {
-        nextButton.classList.add("disabled");
-      } else {
-        nextButton.classList.remove("disabled");
-      }
-    })
-    .catch((error) => {
-      console.error("Error fetching API data", error);
-    });
-}
-
 // Time Remains
 const parseTimeAgo = (time) => {
   const d = new Date(time).getTime();
@@ -408,40 +381,9 @@ const parseTimeAgo = (time) => {
   }
 };
 
-// Content Comment
-const parseContentGreeting = (name, message, isHadir, date) => {
-  let strHtml = "";
-  strHtml += `
-    <div class="shadow p-3 mb-3 rounded">
-    <div
-      class="flex-wrap justify-content-between align-items-center"
-      id="apiData1"
-    >
-    <!-- Name -->
-    <span class="text-truncate m-0 p-0 gs-c" id="span-one">${name}</span>
-    <!-- Status -->
-      <span class="text-truncate m-0 p-0 gs-c" id="span-two">${
-        isHadir
-          ? '<i class="fa-solid fa-circle-check text-success"></i>'
-          : '<i class="fa-solid fa-circle-xmark text-danger"></i>'
-      }</span>
-    </div>
-    <div
-      class="d-flex flex-wrap justify-content-between align-items-center"
-      id="apiData2"
-    >
-      <!-- Message -->
-      <span class="m-0 p-0 gs-c" id="span-three">${message}</span>
-      <!-- Timestamp -->
-      <span class="col-12 gs-c" id="span-four">${parseTimeAgo(date)}</span>
-    </div>
-    </div>
-    `;
-  return strHtml;
-};
-
 // POST
 document.getElementById("send-msg").addEventListener("click", () => {
+  document.getElementById("send-msg").disabled = true;
   const formName = document.getElementById("form-name");
   const formAttend = document.getElementById("form-attend");
   const formMessage = document.getElementById("form-message");
@@ -449,7 +391,7 @@ document.getElementById("send-msg").addEventListener("click", () => {
   const postData = {
     // Your POST data properties here
     name: formName.value,
-    is_hadir: formAttend.value == "1" ? true : false,
+    isAttend: formAttend.value == "1" ? true : false,
     message: formMessage.value,
   };
 
@@ -463,13 +405,14 @@ document.getElementById("send-msg").addEventListener("click", () => {
     body: JSON.stringify(postData),
   };
 
-  fetch(api_url, requestOptions)
+  fetch("https://api-asarez.arulajeh.id/submit", requestOptions)
     .then((response) => response.json()) // Assuming JSON response
     .then((data) => {
       formName.value = "";
-      formAttend.value = "";
+      formAttend.value = "0";
       formMessage.value = "";
-      getGreetingsData();
+      util.loadGuestMessages();
+      document.getElementById("send-msg").disabled = false;
     })
     .catch((error) => {
       console.error("Error sending or receiving API data", error);
@@ -496,21 +439,19 @@ function checkInput() {
 function paginationNext() {
   if (pagination.page >= pagination.total_page) return;
   pagination.page += 1;
-  getGreetingsData();
+  util.loadGuestMessages();
 }
 
 function paginationPrevious() {
   if (pagination.page <= 1) return;
   pagination.page -= 1;
-  getGreetingsData();
+  util.loadGuestMessages();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   const formName = document.getElementById("form-name");
   const formAttend = document.getElementById("form-attend");
   const formMessage = document.getElementById("form-message");
-
-  getGreetingsData();
 
   nextButton.addEventListener("click", () => {
     paginationNext();
