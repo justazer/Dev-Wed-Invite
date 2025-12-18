@@ -121,23 +121,7 @@ const util = (() => {
     new bootstrap.Modal("#modal-image").show();
   };
 
-  // const tamu = () => {
-  //   let name = new URLSearchParams(window.location.search).get("to");
-
-  //   if (!name) {
-  //     document.getElementById("nama-tamu").remove();
-  //     return;
-  //   }
-
-  //   let div = document.createElement("div");
-  //   div.classList.add("m-2");
-  //   div.innerHTML = `<p class="mt-0 mb-1 mx-0 p-0 text-light">Kepada Yth Bapak/Ibu/Saudara/i</p><h2 class="text-light">${escapeHtml(
-  //     name
-  //   )}</h2>`;
-
-  //   document.getElementById("form-name").value = name;
-  //   document.getElementById("nama-tamu").appendChild(div);
-  // };
+  //COMMENT
 
   let GUEST_DATA = [];
 
@@ -145,9 +129,12 @@ const util = (() => {
     try {
       const requestOptions = {
         method: "GET",
-        redirect: "follow"
+        redirect: "follow",
       };
-      const response = await fetch(`https://api-asarez.arulajeh.id/list?page=${pagination.page}&limit=10`, requestOptions)
+      const response = await fetch(
+        `https://api-asarez.arulajeh.id/list?page=${pagination.page}&limit=10`,
+        requestOptions
+      )
         .then((response) => response.json())
         .catch((error) => console.error(error));
       pagination.total_page = response.totalPages;
@@ -155,7 +142,7 @@ const util = (() => {
       console.log(response);
       return response?.data || [];
     } catch (error) {
-      console.error('Error fetching guest messages:', error);
+      console.error("Error fetching guest messages:", error);
       return [];
     }
   }
@@ -178,26 +165,30 @@ const util = (() => {
     }
     pageNumber.innerText = `Halaman ${pagination.page} dari ${pagination.total_page}`;
 
-    GUEST_DATA = guestList.map(item => {
+    GUEST_DATA = guestList.map((item) => {
       return {
         nama: item.name,
-        status: item.isAttend ? 'Hadir' : 'Tidak Hadir',
+        status: item.isAttend ? "Hadir" : "Tidak Hadir",
         pesan: item.message,
-        waktu: parseTimeAgo(item.createdAt)
-      }
+        waktu: parseTimeAgo(item.createdAt),
+      };
     });
-    const container = document.getElementById('guest-list-container');
+    const container = document.getElementById("guest-list-container");
 
     //Clear container
-    container.innerHTML = '';
+    container.innerHTML = "";
 
     // GUEST_DATA / API_URL
-    GUEST_DATA.forEach(item => {
+    GUEST_DATA.forEach((item) => {
       const messageCard = `
             <div class="border-bottom pb-3 mb-3">
                 <div class="d-flex justify-content-between align-items-center mb-1">
-                    <span class="fw-bold text-truncate brown-object" style="max-width: 70%;">${item.nama}</span>
-                    <span class="badge ${item.status === 'Hadir' ? 'bg-success' : 'bg-secondary'} small">
+                    <span class="fw-bold text-truncate brown-object" style="max-width: 70%;">${
+                      item.nama
+                    }</span>
+                    <span class="badge ${
+                      item.status === "Hadir" ? "bg-success" : "bg-secondary"
+                    } small">
                         ${item.status}
                     </span>
                 </div>
@@ -289,7 +280,7 @@ const util = (() => {
     escapeHtml,
     opacity,
     show,
-    loadGuestMessages
+    loadGuestMessages,
   };
 })();
 
