@@ -254,7 +254,7 @@ const util = (() => {
     })();
   };
 
-  const buka = async (button) => {
+  const open = async (button) => {
     button.disabled = true;
     document.querySelector("body").style.overflowY = "scroll";
     AOS.init();
@@ -296,7 +296,7 @@ const util = (() => {
   };
 
   return {
-    buka,
+    open,
     modal,
     music,
     salin,

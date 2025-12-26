@@ -82,12 +82,20 @@ body::-webkit-scrollbar {
 }
 
 .loading-page {
+  opacity: 100;
+  background-size: cover; 
+  background-position: center; 
+  background-attachment: fixed;
+  color: white;
+
   position: fixed;
   inset: 0 !important;
   width: 100%;
   height: 100%;
   background-color: var(--light-brown);
   z-index: 1056 !important;
+
+
 }
 
 .card-body {
