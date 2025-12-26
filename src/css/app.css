@@ -94,9 +94,8 @@ body::-webkit-scrollbar {
   height: 100%;
   background-color: var(--light-brown);
   z-index: 1056 !important;
-
-
 }
+
 
 .card-body {
   overflow-wrap: break-word !important;

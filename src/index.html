@@ -56,6 +56,7 @@
     integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
     integrity="sha256-GqiEX9BuR1rv5zPU5Vs2qS/NSHl1BJyBcjQYJ6ycwD4=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" />
@@ -76,8 +77,51 @@
 
 <body>
   <!-- Welcome Page -->
-  <div class="loading-page" id="welcome" style="
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./assets/images/bgl.webp');">
+  <div class="loading-page" id="welcome"
+    style="
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./assets/images/welcome/bgl.webp');">
+
+    <img class="animate__animated animate__pulse animate__infinite" src="./assets/images/welcome/lb.webp" alt="frame"
+      style="
+        position: absolute;
+        bottom: 0;   
+        left: 0;        
+        width: 180px;  
+        z-index: 0; 
+        width: 180px; /* Sesuaikan ukuran */
+        opacity: 0.8; /* Opsional: agar lebih menyatu dengan background */  
+        pointer-events: none;">
+
+    <img class="animate__animated animate__pulse animate__infinite" src="./assets/images/welcome/rb.webp" alt="frame"
+      style="
+        position: absolute;
+        bottom: 0;   
+        right: 0;        
+        width: 180px;  
+        z-index: 0; 
+        width: 180px; /* Sesuaikan ukuran */
+        opacity: 0.8; /* Opsional: agar lebih menyatu dengan background */  
+        pointer-events: none;">
+
+    <div style="
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        pointer-events: none;
+        z-index: 0;">
+
+      <img src="./assets/images/welcome/mt.webp" alt="frame"
+        class="animate__animated animate__pulse animate__infinite" style="
+                width: 200px;         /* Lebar untuk desktop */
+                max-width: 80vw;      /* Lebar responsif untuk HP (80% lebar layar) */
+                height: auto;
+                opacity: 0.9;
+                --animate-duration: 5s;">
+    </div>
+
     <div class="d-flex justify-content-center align-items-center" style="height: 100vh !important">
       <div class="text-center">
         <h1 class="font-esthetic mb-4" style="font-size: 2.5rem">

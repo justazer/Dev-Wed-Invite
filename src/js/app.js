@@ -270,9 +270,10 @@ const util = (() => {
     // await session.check();
     await animation();
 
+    // Full Screen
     const docElm = document.documentElement;
 
-    // Meminta mode Fullscreen
+    // Reques Fullscreen Mode
     if (docElm.requestFullscreen) {
       docElm.requestFullscreen();
     } else if (docElm.mozRequestFullScreen) { /* Firefox */
@@ -283,9 +284,8 @@ const util = (() => {
       docElm.msRequestFullscreen();
     }
 
-    // Menghilangkan overlay
-    document.getElementById('overlay').style.display = 'none';
-
+    // Remove Overlay
+    // document.getElementById('overlay').style.display = "none";
   };
 
   const show = () => {
