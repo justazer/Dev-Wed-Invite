@@ -67,7 +67,7 @@ body::-webkit-scrollbar {
   border-radius: 50%;
 }
 
-.img-crop>img {
+.img-crop > img {
   display: block;
   margin: 0 auto;
   height: 100%;
@@ -96,6 +96,16 @@ body::-webkit-scrollbar {
   z-index: 1056 !important;
 }
 
+.img-border-overlay-frame {
+  position: absolute;
+  top: 60%;
+  left: 51%;
+  transform: translate(-50%, -50%); /* Menjaga gambar tetap di tengah */
+  width: 120% !important;
+  height: 120% !important;
+  z-index: 10;        /* Memastikan ini di lapisan atas */
+  pointer-events: none; /* Opsional: agar klik tembus ke gambar di bawahnya */
+}
 
 .card-body {
   overflow-wrap: break-word !important;
