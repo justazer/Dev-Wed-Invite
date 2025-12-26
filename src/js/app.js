@@ -1,7 +1,8 @@
 // Button
 var animateButton = function (e) {
   e.preventDefault;
-  //reset animation
+
+  //Reset Animation
   e.target.classList.remove("animate");
 
   e.target.classList.add("animate");
@@ -54,6 +55,13 @@ const util = (() => {
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#039;");
   };
+
+  // Get Guest Name From URL Parameter (?to=Nama)
+  const urlParams = new URLSearchParams(window.location.search);
+  const tamu = urlParams.get('to');
+  if (tamu) {
+    document.getElementById('guest-name').innerText = tamu;
+  }
 
   // Copy Account Number Button
   const salin = (btn, msg = "Tersalin", timeout = 1500) => {
@@ -183,12 +191,10 @@ const util = (() => {
       const messageCard = `
             <div class="border-bottom pb-3 mb-3">
                 <div class="d-flex justify-content-between align-items-center mb-1">
-                    <span class="fw-bold text-truncate brown-object" style="max-width: 70%;">${
-                      item.nama
-                    }</span>
-                    <span class="badge ${
-                      item.status === "Hadir" ? "bg-success" : "bg-secondary"
-                    } small">
+                    <span class="fw-bold text-truncate brown-object" style="max-width: 70%;">${item.nama
+        }</span>
+                    <span class="badge ${item.status === "Hadir" ? "bg-success" : "bg-secondary"
+        } small">
                         ${item.status}
                     </span>
                 </div>
@@ -263,6 +269,23 @@ const util = (() => {
     });
     // await session.check();
     await animation();
+
+    const docElm = document.documentElement;
+
+    // Meminta mode Fullscreen
+    if (docElm.requestFullscreen) {
+      docElm.requestFullscreen();
+    } else if (docElm.mozRequestFullScreen) { /* Firefox */
+      docElm.mozRequestFullScreen();
+    } else if (docElm.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+      docElm.webkitRequestFullscreen();
+    } else if (docElm.msRequestFullscreen) { /* IE/Edge */
+      docElm.msRequestFullscreen();
+    }
+
+    // Menghilangkan overlay
+    document.getElementById('overlay').style.display = 'none';
+
   };
 
   const show = () => {

@@ -16,6 +16,9 @@
   <!-- Appearance -->
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="Assa & Reza Wedding" />
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
   <meta name="theme-color" content="#111111" />
   <meta name="color-scheme" content="dark" />
   <link rel="icon" type="image/x-icon" href="./assets/images/rose.png" />
@@ -85,8 +88,13 @@
         <h1 class="font-esthetic my-4" style="font-size: 2.5rem">
           Assa & Reza
         </h1>
-        <div id="nama-tamu"></div>
-        <button type="button" class="btn btn-light shadow rounded-4 mt-4 confetti-button" onclick="util.buka(this)">
+        <h8 class="white-object">Kepada Yth: <br>Bapak/Ibu/Saudara/i</br></h8>
+        <br>
+        <h5>
+          <div id="guest-name" class="white-object"></div>
+        </h5>
+        </br>
+        <button type="button" class="confetti-button btn btn-light shadow rounded-4 mt-4" onclick="util.buka(this)">
           <i class="fa-solid fa-envelope-open me-2"></i>Buka Undangan
         </button>
       </div>
@@ -472,8 +480,7 @@
               placeholder="Tulis Ucapan & Doa"></textarea>
           </div>
           <div class="d-flex">
-            <button class="flex-fill btn btn-light btn-sm rounded-3 shadow m-1 confetti-button brown-obj"
-              id="send-msg">
+            <button class="flex-fill btn btn-light btn-sm rounded-3 shadow m-1 confetti-button brown-obj" id="send-msg">
               Kirim<i class="fa-solid fa-paper-plane ms-1"></i>
             </button>
           </div>
