@@ -10,6 +10,10 @@
   --very-dark-brown: #7d5b4d;
 }
 
+.animate-low {
+  --animate-duration: 20s;
+}
+
 html {
   scroll-behavior: smooth !important;
 }
