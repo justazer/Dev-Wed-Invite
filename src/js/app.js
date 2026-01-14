@@ -256,6 +256,14 @@ const util = (() => {
 
   const open = async (button) => {
     button.disabled = true;
+
+    // Request fullscreen
+    if (document.documentElement.requestFullscreen) {
+      document.documentElement.requestFullscreen().catch((err) => {
+        console.warn(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+      });
+    }
+
     document.querySelector("body").style.overflowY = "hidden";
     audio.play();
     opacity("welcome");
@@ -298,15 +306,17 @@ const util = (() => {
             else link.classList.remove('active');
           });
         },
-        touchStart: function (e) {
-          this.touchStartX = e.touches[0].clientX;
-          this.touchStartY = e.touches[0].clientY;
+        touchStart: function (swiper, e) {
+          const touch = e.touches ? e.touches[0] : e;
+          this.touchStartX = touch.clientX;
+          this.touchStartY = touch.clientY;
         },
-        touchEnd: function (e) {
+        touchEnd: function (swiper, e) {
           if (!this.touchStartX || !this.touchStartY) return;
 
-          const touchEndX = e.changedTouches[0].clientX;
-          const touchEndY = e.changedTouches[0].clientY;
+          const touch = e.changedTouches ? e.changedTouches[0] : e;
+          const touchEndX = touch.clientX;
+          const touchEndY = touch.clientY;
 
           const diffX = this.touchStartX - touchEndX;
           const diffY = this.touchStartY - touchEndY;
@@ -315,8 +325,8 @@ const util = (() => {
           const isGallery = e.target.closest('#carousel-foto-satu');
           if (isGallery) return;
 
-          // Threshold to detect as horizontal swipe (e.g., 50px)
-          const threshold = 50;
+          // Threshold to detect as horizontal swipe (e.g., 30px)
+          const threshold = 30;
 
           // Check if it's more of a horizontal movement than vertical
           if (Math.abs(diffX) > Math.abs(diffY)) {
