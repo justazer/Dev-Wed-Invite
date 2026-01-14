@@ -57,11 +57,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
     integrity="sha256-GqiEX9BuR1rv5zPU5Vs2qS/NSHl1BJyBcjQYJ6ycwD4=" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Work+Sans:wght@300;400;600&display=swap" />
 
   <!-- App -->
   <link rel=" stylesheet" href="./css/app.css" />
@@ -113,15 +117,14 @@
         pointer-events: none;
         z-index: 0;">
 
-      <img src="./assets/images/welcome/mt.webp" alt="frame"
-        class="animate__animated animate__pulse animate__infinite" style="
+      <img src="./assets/images/welcome/mt.webp" alt="frame" class="animate__animated animate__pulse animate__infinite"
+        style="
                 width: 200px; 
                 max-width: 80vw;
                 height: auto;
                 opacity: 0.9;
                 pointer-events: none;">
     </div>
-
     <div class="d-flex justify-content-center align-items-center" style="height: 100vh !important">
       <div class="text-center">
         <h1 class="font-esthetic mb-4" style="font-size: 2.5rem">
@@ -140,8 +143,9 @@
           <div id="guest-name" class="white-object"></div>
         </h5>
         </br>
-        <button type="button" class="confetti-button btn btn-light shadow rounded-4 mt-4" onclick="util.open(this)">
-          <i class="fa-solid fa-envelope-open me-2"></i>Buka Undangan
+        <button type="button" class="white-object confetti-button btn btn-light shadow rounded-4 mt-4"
+          onclick="util.open(this)">
+          <i class="white-object fa-solid fa-envelope-open me-2"></i>Buka Undangan
         </button>
       </div>
     </div>
@@ -208,426 +212,484 @@
           <span class="d-block brown-obj" style="font-size: 0.7rem">Gift</span>
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#ucapan">
+          <i class="fa-solid fa-comment-dots brown-obj"></i>
+          <span class="d-block brown-obj" style="font-size: 0.7rem">Ucapan</span>
+        </a>
+      </li>
     </ul>
   </nav>
 
   <!-- Main Content -->
-  <main class="text-light main-nav" data-bs-spy="scroll" data-bs-target="#navbar-menus"
-    data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
-    <!-- Home -->
-    <section class="container" id="home">
-      <div class="text-center pt-4">
-        <h1 class="font-esthetic my-4 brown-object" style="font-size: 3.5rem">
-          Undangan Pernikahan
-        </h1>
-        <div class="py-4">
-          <div class="img-crop border border-3 border-light shadow mx-auto">
-            <img src="./assets/images/bg.jpg" alt="bg" onclick="util.modal(this)" />
-          </div>
-        </div>
-        <h1 class="font-esthetic my-4 brown-object" style="font-size: 3rem">
-          Assa & Reza
-        </h1>
-        <p class="mb-0 brown-object" style="font-size: 1.5rem">Ahad, 1 Februari 2026</p>
-        <div class="d-flex justify-content-center align-items-center mt-4 mb-2">
-          <div class="mouse-animation">
-            <div class="scroll-animation"></div>
-          </div>
-        </div>
-        <p class="m-0 brown-object">Scroll Down</p>
-      </div>
-    </section>
-
-    <!-- Wave Separator -->
-    <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-      <path class="wave-separator"
-        d="M0,160L48,144C96,128,192,96,288,106.7C384,117,480,171,576,165.3C672,160,768,96,864,96C960,96,1056,160,1152,154.7C1248,149,1344,75,1392,37.3L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
-      </path>
-    </svg>
-
-    <!-- Mempelai -->
-    <section class="dark-section" id="mempelai">
-      <div class="text-center">
-        <h1 class="font-arabic py-4 px-2" style="font-size: 2rem">
-          بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ
-        </h1>
-        <h1 class="font-esthetic py-4 px-2" style="font-size: 2rem">
-          Assalamualaikum Warahmatullahi Wabarakatuh
-        </h1>
-
-        <p class="pb-3 px-3">
-          Tanpa mengurangi rasa hormat. Kami mengundang Bapak/Ibu/Saudara/i
-          serta kerabat sekalian untuk menghadiri acara pernikahan kami:
-        </p>
-
-        <div class="overflow-x-hidden">
-          <div data-aos="fade-right" data-aos-duration="2000">
-            <div class="img-crop border border-3 border-light shadow my-4 mx-auto">
-              <img src="./assets/images/cowo.jpg" alt="cowo" onclick="util.modal(this)" />
-            </div>
-            <h1 class="font-esthetic" style="font-size: 3rem">
-              Reza Fauzi Baharsyah
+  <main class="text-light main-nav" tabindex="0">
+    <!-- Swiper Container -->
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <!-- Home -->
+        <section class="container swiper-slide" id="home">
+          <div class="text-center pt-4">
+            <h1 class="font-aesthetic my-4" style="font-size: 2rem">
+              The Wedding Of
             </h1>
-            <p class="mt-3 mb-0" style="font-size: 1.25rem">Putra</p>
-            <p class="mb-0">Bpk. Bambang Eddy S. & Ibu Munawaroh</p>
-          </div>
-          <h1 class="font-esthetic my-4" style="font-size: 4rem">&</h1>
-          <div data-aos="fade-left" data-aos-duration="2000">
-            <div class="img-crop border border-3 border-light shadow my-4 mx-auto">
-              <img src="./assets/images/cewe.jpg" alt="cewe" onclick="util.modal(this)" />
-            </div>
-            <h1 class="font-esthetic" style="font-size: 3rem">Nurkhasanah</h1>
-            <p class="mt-3 mb-0" style="font-size: 1.25rem">Putri</p>
-            <p class="mb-0">Bpk. Sa'ali & Ibu Kipah</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Wave Separator -->
-    <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-      <path class="wave-separator"
-        d="M0,192L40,181.3C80,171,160,149,240,149.3C320,149,400,171,480,165.3C560,160,640,128,720,128C800,128,880,160,960,186.7C1040,213,1120,235,1200,218.7C1280,203,1360,149,1400,122.7L1440,96L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z">
-      </path>
-    </svg>
-
-    <!-- Firman Allah Subhanahu Wa Ta'ala -->
-    <div class="container">
-      <div class="text-center" data-aos="fade-up" data-aos-duration="2000">
-        <h1 class="font-esthetic mt-0 mb-3 brown-object" style="font-size: 2rem">
-          Allah Subhanahu Wa Ta'ala berfirman
-        </h1>
-        <p style="font-size: 0.9rem" class="px-2 brown-object">
-          Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan
-          pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung
-          dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa
-          kasih dan sayang. Sungguh, pada yang demikian itu benar-benar
-          terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.
-        </p>
-        <span class="mb-0 brown-object"><strong>QS. Ar-Rum Ayat 21</strong></span>
-      </div>
-    </div>
-
-    <!-- Wave Separator -->
-    <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-      <path class="wave-separator"
-        d="M0,96L30,106.7C60,117,120,139,180,154.7C240,171,300,181,360,186.7C420,192,480,192,540,181.3C600,171,660,149,720,154.7C780,160,840,192,900,208C960,224,1020,224,1080,208C1140,192,1200,160,1260,138.7C1320,117,1380,107,1410,101.3L1440,96L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z">
-      </path>
-    </svg>
-
-    <!-- Tanggal -->
-    <section class="dark-section" id="tanggal">
-      <div class="container">
-        <div class="text-center">
-          <h1 class="font-esthetic py-3" style="font-size: 2rem">
-            Waktu Menuju Acara
-          </h1>
-          <div class="border rounded-pill shadow py-2 px-4 mx-2 mb-4">
-            <!-- Change Date & Time Bottom -->
-            <div class="row justify-content-center simply-countdown" time-data="2026-02-01 09:00:00"
-              id="tampilan-waktu">
-              <div class="col-3 p-1">
-                <h2 class="d-inline m-0 p-0 time-f" id="hari"></h2>
-                <small class="ms-1 me-0 my-0 p-0 d-inline time-ff">Hari</small>
-              </div>
-              <div class="col-3 p-1">
-                <h2 class="d-inline m-0 p-0 time-f" id="jam">0</h2>
-                <small class="ms-1 me-0 my-0 p-0 d-inline time-ff">Jam</small>
-              </div>
-              <div class="col-3 p-1">
-                <h2 class="d-inline m-0 p-0 time-f" id="menit">0</h2>
-                <small class="ms-1 me-0 my-0 p-0 d-inline time-ff">Menit</small>
-              </div>
-              <div class="col-3 p-1">
-                <h2 class="d-inline m-0 p-0 time-f" id="detik">0</h2>
-                <small class="ms-1 me-0 my-0 p-0 d-inline time-ff">Detik</small>
+            <div class="py-4 d-flex justify-content-center align-items-center">
+              <div class="img-crop">
+                <img src="./assets/images/welcome/mid-frm.webp" alt="border" class="img-border-overlay-frame" />
+                <img src="./assets/images/bg.jpg" alt="bg" onclick="util.modal(this)" />
               </div>
             </div>
-          </div>
-
-          <p style="font-size: 1rem" class="mt-4 py-2">
-            Dengan memohon rahmat dan ridha Allah Subhanahu Wa Ta'ala,
-            InsyaAllah kami akan menyelenggarakan acara :
-          </p>
-
-          <div class="overflow-x-hidden">
-            <div class="py-2" data-aos="fade-left" data-aos-duration="1500">
-              <h1 class="font-esthetic" style="font-size: 2rem">Akad</h1>
-              <p>Ahad, 1 Februari 2026</p>
-              <p>Pukul 09.00 WIB</p>
-              <div>
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2087.9988640143274!2d108.45413371190457!3d-6.621858486893268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNsKwMzcnMTcuMiJTIDEwOMKwMjcnMTUuNiJF!5e0!3m2!1sen!2sid!4v1765795817464!5m2!1sen!2sid"
-                  width="45%" height="160vh" frameborder="0" style="border: 0" allowfullscreen></iframe>
+            <h1 class="font-esthetic my-4" style="font-size: 3rem">
+              Assa & Reza
+            </h1>
+            <p class="mb-0" style="font-size: 1.5rem">Ahad, 1 Februari 2026</p>
+            <div class="d-flex justify-content-center align-items-center mt-4 mb-2">
+              <div class="mouse-animation">
+                <div class="scroll-animation"></div>
               </div>
-              <a href="https://maps.app.goo.gl/yJV6VkRJD9cpaEGq8" target="_blank"
-                class="btn btn-outline-light btn-sm rounded-pill shadow-sm mb-2 px-3">
-                <i class="fa-solid fa-map-location-dot me-2"></i>Lihat Google
-                Maps
-              </a>
-              <p class="mb-0 mt-1 mx-1 pb-4" style="font-size: 0.9rem">
-                Blok 5 RT. 022 RW. 008 Desa Panguragan, Kec. Panguragan, Kab.
-                Cirebon, Jawa Barat
+            </div>
+            <p class="m-0">Scroll Down</p>
+          </div>
+        </section>
+
+        <!-- Firman Allah Subhanahu Wa Ta'ala -->
+        <section class="swiper-slide">
+          <div class="container">
+            <div class="text-center">
+              <h1 class="font-esthetic mt-0 mb-3" style="font-size: 2rem">
+                Allah Subhanahu Wa Ta'ala berfirman
+              </h1>
+              <p style="font-size: 0.9rem" class="px-2 paragraf">
+                Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan
+                pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung
+                dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa
+                kasih dan sayang. Sungguh, pada yang demikian itu benar-benar
+                terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.
               </p>
+              <span class="mb-0"><strong>QS. Ar-Rum Ayat 21</strong></span>
             </div>
+            <img class="animate__animated animate__pulse animate__infinite" src="./assets/images/welcome/lb.webp"
+              alt="frame" style="
+        position: absolute;
+        bottom: 0;   
+        left: 0;        
+        width: 180px;  
+        z-index: 0; 
+        width: 180px;
+        opacity: 0.8;  
+        pointer-events: none;">
 
-            <div class="py-2" data-aos="fade-right" data-aos-duration="1500">
-              <h1 class="font-esthetic" style="font-size: 2rem">Resepsi</h1>
-              <p>Ahad, 1 Februari 2026</p>
-              <p>Pukul 12.00 WIB - Selesai</p>
-              <div>
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2087.9988640143274!2d108.45413371190457!3d-6.621858486893268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNsKwMzcnMTcuMiJTIDEwOMKwMjcnMTUuNiJF!5e0!3m2!1sen!2sid!4v1765795817464!5m2!1sen!2sid"
-                  width="45%" height="160vh" frameborder="0" style="border: 0" allowfullscreen></iframe>
-              </div>
-              <a href="https://maps.app.goo.gl/yJV6VkRJD9cpaEGq8" target="_blank"
-                class="btn btn-outline-light btn-sm rounded-pill shadow-sm mb-2 px-3">
-                <i class="fa-solid fa-map-location-dot me-2"></i>Lihat Google
-                Maps
-              </a>
-              <p class="mb-0 mt-1 mx-1 pb-4" style="font-size: 0.9rem">
-                Blok 5 RT. 022 RW. 008 Desa Panguragan, Kec. Panguragan, Kab.
-                Cirebon, Jawa Barat
-              </p>
-            </div>
+            <img class="animate__animated animate__pulse animate__infinite" src="./assets/images/welcome/rb.webp"
+              alt="frame" style="
+        position: absolute;
+        bottom: 0;   
+        right: 0;        
+        width: 180px;  
+        z-index: 0; 
+        width: 180px; 
+        opacity: 0.8; 
+        pointer-events: none;">
+
+            <img class="animate__animated animate__pulse animate__infinite" src="./assets/images/welcome/lt.webp"
+              alt="frame" style="
+        position: absolute;
+        top: 0;   
+        left: 0;        
+        width: 180px;  
+        z-index: 0; 
+        width: 180px;
+        opacity: 0.8;  
+        pointer-events: none;">
+
+            <img class="animate__animated animate__pulse animate__infinite" src="./assets/images/welcome/rt.webp"
+              alt="frame" style="
+        position: absolute;
+        top: 0;   
+        right: 0;        
+        width: 180px;  
+        z-index: 0; 
+        width: 180px; 
+        opacity: 0.8; 
+        pointer-events: none;">
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <!-- Galeri Foto -->
-    <section class="dark-section" id="galeri">
-      <div class="container pb-2 pt-4">
-        <div class="card-body border rounded-4 shadow p-3">
-          <h1 class="font-esthetic text-center py-3" data-aos="fade-down" data-aos-duration="1500"
-            style="font-size: 2rem">
-            Galeri
-          </h1>
+        <!-- Mempelai -->
+        <section id="mempelai" class="swiper-slide">
+          <div class="text-center">
+            <h1 class="font-arabic py-4 px-2" style="font-size: 2rem">
+              بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ
+            </h1>
+            <h1 class="font-esthetic px-2" style="font-size: 1.5rem">
+              Assalamualaikum Warahmatullahi Wabarakatuh
+            </h1>
 
-          <div id="carousel-foto-satu" data-aos="fade-up" data-aos-duration="1000" class="carousel slide"
-            data-bs-ride="carousel">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carousel-foto-satu" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carousel-foto-satu" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carousel-foto-satu" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
+            <p class="px-3">
+              Tanpa mengurangi rasa hormat. Kami mengundang Bapak/Ibu/Saudara/i
+              serta kerabat sekalian untuk menghadiri acara pernikahan kami:
+            </p>
+
+            <div class="overflow-x-hidden">
+              <div class="img-crop mx-auto">
+                <img src="./assets/images/mempelai.webp" alt="cowo" onclick="util.modal(this)" />
+              </div>
+              <h1 class="font-esthetic" style="font-size: 2rem">
+                Reza Fauzi Baharsyah
+              </h1>
+              <p class="mb-0" style="font-size: 1.25rem">Putra</p>
+              <p class="mb-0">Bpk. Bambang Eddy S. & Ibu Munawaroh</p>
             </div>
-            <div class="carousel-inner rounded-4">
-              <div class="carousel-item active">
-                <img src="./assets/images/photo1.jpg" alt="gambar 1" class="d-block w-100" onclick="util.modal(this)" />
-              </div>
-              <div class="carousel-item">
-                <img src="./assets/images/photo2.jpg" alt="gambar 2" class="d-block w-100" onclick="util.modal(this)" />
-              </div>
-              <div class="carousel-item">
-                <img src="./assets/images/photo3.jpg" alt="gambar 3" class="d-block w-100" onclick="util.modal(this)" />
-              </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carousel-foto-satu"
-              data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carousel-foto-satu"
-              data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Wave Separator -->
-    <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-      <path class="wave-separator"
-        d="M0,96L30,106.7C60,117,120,139,180,154.7C240,171,300,181,360,186.7C420,192,480,192,540,181.3C600,171,660,149,720,154.7C780,160,840,192,900,208C960,224,1020,224,1080,208C1140,192,1200,160,1260,138.7C1320,117,1380,107,1410,101.3L1440,96L1440,0L1410,0C1380,0,1320,0,1260,0C1200,0,1140,0,1080,0C1020,0,960,0,900,0C840,0,780,0,720,0C660,0,600,0,540,0C480,0,420,0,360,0C300,0,240,0,180,0C120,0,60,0,30,0L0,0Z">
-      </path>
-    </svg>
-
-    <!-- Hadiah -->
-    <div class="container" id="gift">
-      <div class="py-4">
-        <div class="text-center">
-          <h1 class="font-esthetic mt-0 mb-3 brown-object" style="font-size: 3rem">
-            Love Gift
-          </h1>
-          <p class="mb-1 reg-word brown-object">
-            Tanpa mengurangi rasa hormat, bagi anda yang ingin memberikan
-            tanda kasih untuk kami, dapat melalui :
-          </p>
-          <div class="overflow-x-hidden">
-            <div class="row justify-content-center">
-              <div class="col-5 card-body border rounded-4 shadow p-3 m-3" data-aos="fade-down"
-                data-aos-duration="1500">
-                <img src="./assets/images/sb.jpg" class="img-fluid w-80 rounded-3" alt="gojek" />
-                <p class="card-text mt-3 mb-0 reg-word brown-object">
-                  No. Rekening 901903534145
-                </p>
-                <p class="card-text reg-word brown-object">a.n Reza Fauzi Baharsyah</p>
-                <!-- no rekening -->
-                <button class="btn btn-light btn-sm rounded-2 confetti-button" data-nomer="901903534145"
-                  onclick="util.salin(this)" autofocus>
-                  Salin
-                </button>
-              </div>
-              <div class="col-5 card-body border rounded-4 shadow p-3 m-3" data-aos="fade-down"
-                data-aos-duration="1500">
-                <img src="./assets/images/bri.jpg" class="img-fluid w-80 rounded-3" alt="bca" />
-                <p class="card-text mt-3 mb-0 brown-object" style="font-size: 0.9rem">
-                  No. Rekening 414301039625530
-                </p>
-                <p class="card-text brown-object" style="font-size: 0.9rem">
-                  a.n Nurkhasanah
-                </p>
-                <!-- no rekening -->
-                <button class="btn btn-light btn-sm rounded-2 confetti-button" data-nomer="414301039625530"
-                  onclick="util.salin(this)" autofocus>
-                  Salin
-                </button>
-              </div>
+            <h1 class="font-esthetic" style="font-size: 2rem">
+              &
+            </h1>
+            <div>
+              <h1 class="font-esthetic" style="font-size: 2rem">Nurkhasanah</h1>
+              <p class="mb-0" style="font-size: 1.25rem">Putri</p>
+              <p class="mb-0">Bpk. Sa'ali & Ibu Kipah</p>
             </div>
           </div>
-          <p class="mb-1 reg-word brown-object" style="font-size: 1.2rem">
-            atau dapat mengirim paket ke alamat berikut :
-          </p>
-          <p class="mb-1 reg-word brown-object">Blok 5 RT. 022 RW. 008 Desa Panguragan,
-            Kec. Panguragan, Kab. Cirebon, Jawa Barat</p>
-        </div>
-      </div>
-    </div>
+        </section>
 
-    <!-- Ucapan -->
-    <section class="m-0 p-0" id="ucapan">
-      <div class="container">
-        <div class="card-body border rounded-4 shadow p-3">
-          <h1 class="font-esthetic text-center mb-3 brown-object" style="font-size: 3rem">
-            Ucapan & Doa
-          </h1>
-          <div class="mb-1" id="balasan"></div>
 
-          <div class="mb-3">
-            <label for="form-nama" class="form-label brown-object">Nama</label>
-            <input type="text" class="form-control shadow-sm" id="form-name" placeholder="Isikan Nama Anda" />
-          </div>
-          <div class="mb-3">
-            <label for="form-kehadiran" class="form-label brown-object" id="label-kehadiran">Kehadiran</label>
-            <select class="form-select shadow-sm" id="form-attend">
-              <option value="0" selected>Konfirmasi Kehadiran</option>
-              <option value="1">Hadir</option>
-              <option value="2">Berhalangan</option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <label for="form-pesan" class="form-label brown-object">Ucapan & Doa</label>
-            <textarea class="form-control shadow-sm" id="form-message" rows="4"
-              placeholder="Tulis Ucapan & Doa"></textarea>
-          </div>
-          <div class="d-flex">
-            <button class="flex-fill btn btn-light btn-sm rounded-3 shadow m-1 confetti-button brown-obj" id="send-msg">
-              Kirim<i class="fa-solid fa-paper-plane ms-1"></i>
-            </button>
-          </div>
-        </div>
-        <div class="rounded-4 mt-4 mb-2">
-          <h2 class="gl-t brown-object">Guest List</h2>
 
-          <!-- PESAN -->
-
-          <div class="mb-3 d-flex justify-content-center">
-            <div class="bg-light shadow p-3 m-0 rounded-4 gslc w-100" id="guest-list-container">
-              <!-- <div class="d-flex justify-content-between align-items-center mb-1" id="apiData1">
-                <span class="fw-bold text-truncate gs-c" id="span-one">
-                  Nama Tamu
-                </span>
-                <span class="badge bg-info text-dark small gs-c" id="span-two">
-                  Hadir
-                </span>
-              </div>
-              <div class="mb-2" id="apiData2">
-                <div class="p-2 bg-white rounded-3 border-start border-4 border-primary shadow-sm">
-                  <span class="gs-c text-secondary" id="span-three" style="font-style: italic; font-size: 0.9rem;">
-                    "Isi pesan ucapan dari tamu akan muncul di sini secara otomatis..."
-                  </span>
+        <!-- Tanggal -->
+        <section class="dark-section swiper-slide" id="tanggal">
+          <div class="container">
+            <div class="text-center">
+              <h1 class="font-esthetic py-3" style="font-size: 2rem">
+                Waktu Menuju Acara
+              </h1>
+              <div class="border rounded-pill shadow py-2 px-4 mx-2 mb-4">
+                <!-- Change Date & Time Bottom -->
+                <div class="row justify-content-center simply-countdown" time-data="2026-02-01 09:00:00"
+                  id="tampilan-waktu">
+                  <div class="col-3 p-1">
+                    <h2 class="d-inline m-0 p-0 time-f" id="hari"></h2>
+                    <small class="ms-1 me-0 my-0 p-0 d-inline time-ff">Hari</small>
+                  </div>
+                  <div class="col-3 p-1">
+                    <h2 class="d-inline m-0 p-0 time-f" id="jam">0</h2>
+                    <small class="ms-1 me-0 my-0 p-0 d-inline time-ff">Jam</small>
+                  </div>
+                  <div class="col-3 p-1">
+                    <h2 class="d-inline m-0 p-0 time-f" id="menit">0</h2>
+                    <small class="ms-1 me-0 my-0 p-0 d-inline time-ff">Menit</small>
+                  </div>
+                  <div class="col-3 p-1">
+                    <h2 class="d-inline m-0 p-0 time-f" id="detik">0</h2>
+                    <small class="ms-1 me-0 my-0 p-0 d-inline time-ff">Detik</small>
+                  </div>
                 </div>
               </div>
 
-              <div class="d-flex justify-content-end" id="apiData3">
-                <span class="text-muted" id="span-four" style="font-size: 0.7rem;">
-                  <i class="bi bi-clock me-1"></i> Baru saja
-                </span>
-              </div> -->
-
+              <p style="font-size: 1rem" class="mt-4">
+                Dengan memohon rahmat dan ridha Allah Subhanahu Wa Ta'ala,
+                InsyaAllah kami akan menyelenggarakan acara :
+              </p>
+              <div class="overflow-x-hidden">
+                <div>
+                  <h1 class="font-esthetic" style="font-size: 2rem">Akad</h1>
+                  <p>Ahad, 1 Februari 2026 : 09.00 WIB</p>
+                  <h1 class="font-esthetic" style="font-size: 2rem">Resepsi</h1>
+                  <p>Ahad, 1 Februari 2026 : 12.00 WIB - Selesai</p>
+                  <div>
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2087.9988640143274!2d108.45413371190457!3d-6.621858486893268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNsKwMzcnMTcuMiJTIDEwOMKwMjcnMTUuNiJF!5e0!3m2!1sen!2sid!4v1765795817464!5m2!1sen!2sid"
+                      width="45%" height="160vh" frameborder="0" style="border: 0" allowfullscreen></iframe>
+                  </div>
+                  <a href="https://maps.app.goo.gl/yJV6VkRJD9cpaEGq8" target="_blank"
+                    class="btn btn-outline-light btn-sm rounded-pill shadow-sm mb-2 px-3">
+                    <i class="fa-solid fa-map-location-dot me-2"></i>Lihat Google
+                    Maps
+                  </a>
+                  <p class="mb-0 mt-1 mx-1 pb-4" style="font-size: 0.9rem">
+                    Blok 5 RT. 022 RW. 008 Desa Panguragan, Kec. Panguragan, Kab.
+                    Cirebon, Jawa Barat
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <nav class="d-flex justify-content-center mb-0">
-          <ul class="pagination mb-0">
-            <li class="page-item" id="previous">
-              <button class="page-link white-object" aria-label="Sebelumnya">
-                <i class="fa-solid fa-circle-left me-1"></i>Sebelumnya
-              </button>
-            </li>
-            <li class="page-item disabled">
-              <span class="page-link text-light" id="page">1</span>
-            </li>
-            <li class="page-item" id="next">
-              <button class="page-link white-object" aria-label="Selanjutnya">
-                Selanjutnya<i class="fa-solid fa-circle-right ms-1"></i>
-              </button>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </section>
+        </section>
 
-    <!-- Wave Separator -->
-    <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-      <path class="wave-separator"
-        d="M0,224L34.3,234.7C68.6,245,137,267,206,266.7C274.3,267,343,245,411,234.7C480,224,549,224,617,213.3C685.7,203,754,181,823,197.3C891.4,213,960,267,1029,266.7C1097.1,267,1166,213,1234,192C1302.9,171,1371,181,1406,186.7L1440,192L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z">
-      </path>
-    </svg>
-  </main>
+        <!-- Galeri Foto -->
+        <section class="dark-section swiper-slide" id="galeri">
+          <div class="container pb-2 pt-4">
+            <div class="card-body border rounded-4 shadow p-3">
+              <h1 class="font-esthetic text-center py-3" style="font-size: 2rem">
+                Galeri
+              </h1>
 
-  <!-- Footer Undangan -->
-  <footer>
-    <div class="container">
-      <div class="text-center white-object">
-        <p style="font-size: 0.9rem" class="pt-2 pb-1 px-2" data-aos="fade-up" data-aos-duration="1500">
-          Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila, Bapak
-          / Ibu / Saudara / i. berkenan hadir untuk memberikan do'a restunya
-          kami ucapkan terimakasih.
-        </p>
+              <div id="carousel-foto-satu" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carousel-foto-satu" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carousel-foto-satu" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carousel-foto-satu" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner rounded-4">
+                  <div class="carousel-item active">
+                    <img src="./assets/images/photo1.jpg" alt="gambar 1" class="d-block w-100"
+                      onclick="util.modal(this)" />
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./assets/images/photo2.jpg" alt="gambar 2" class="d-block w-100"
+                      onclick="util.modal(this)" />
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./assets/images/photo3.jpg" alt="gambar 3" class="d-block w-100"
+                      onclick="util.modal(this)" />
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carousel-foto-satu"
+                  data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carousel-foto-satu"
+                  data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </div>
+            <img class="animate__animated animate__pulse animate__infinite" src="./assets/images/welcome/lb.webp"
+              alt="frame" style="
+        position: absolute;
+        bottom: 0;   
+        left: 0;        
+        width: 180px;  
+        z-index: 0; 
+        width: 180px;
+        opacity: 0.8;  
+        pointer-events: none;">
 
-        <h1 class="font-esthetic" data-aos="fade-up" data-aos-duration="2000">
-          Wassalamualaikum Warahmatullahi Wabarakatuh
-        </h1>
-        <h1 class="font-arabic py-4 px-2" data-aos="fade-up" data-aos-duration="2000" style="font-size: 2rem">
-          اَلْحَمْدُ لِلّٰهِ رَبِّ الْعٰلَمِيْنَۙ
-        </h1>
+            <img class="animate__animated animate__pulse animate__infinite" src="./assets/images/welcome/rb.webp"
+              alt="frame" style="
+        position: absolute;
+        bottom: 0;   
+        right: 0;        
+        width: 180px;  
+        z-index: 0; 
+        width: 180px; 
+        opacity: 0.8; 
+        pointer-events: none;">
 
-        <hr class="mt-3 mb-2" />
+            <img class="animate__animated animate__pulse animate__infinite" src="./assets/images/welcome/lt.webp"
+              alt="frame" style="
+        position: absolute;
+        top: 0;   
+        left: 0;        
+        width: 180px;  
+        z-index: 0; 
+        width: 180px;
+        opacity: 0.8;  
+        pointer-events: none;">
 
-        <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-          <div class="col-auto">
-            <small class="text-light">
-              Build with<i class="fa-solid fa-heart mx-1 pink-object"></i>Reza
-              F Baharsyah
-            </small>
+            <img class="animate__animated animate__pulse animate__infinite" src="./assets/images/welcome/rt.webp"
+              alt="frame" style="
+        position: absolute;
+        top: 0;   
+        right: 0;        
+        width: 180px;  
+        z-index: 0; 
+        width: 180px; 
+        opacity: 0.8; 
+        pointer-events: none;">
           </div>
-          <div class="col-auto">
-            <small>
-              <i class="fa-brands fa-instagram me-1"></i><a target="instagram"
-                href="https://www.instagram.com/rezafbaharsyah/"
-                class="text-decoration-none pink-object">rezafbaharsyah</a>
-            </small>
+        </section>
+
+        <!-- Hadiah -->
+        <section class="container swiper-slide" id="gift">
+          <div class="py-4">
+            <div class="text-center">
+              <h1 class="font-esthetic mt-0 mb-3" style="font-size: 3rem">
+                Love Gift
+              </h1>
+              <p class="mb-1 reg-word">
+                Tanpa mengurangi rasa hormat, bagi anda yang ingin memberikan
+                tanda kasih untuk kami, dapat melalui :
+              </p>
+              <div class="overflow-x-hidden">
+                <div class="row justify-content-center">
+                  <div class="col-5 card-body border rounded-4 shadow p-3 m-3">
+                    <img src="./assets/images/sb.jpg" class="img-fluid w-80 rounded-3" alt="gojek" />
+                    <p class="card-text mt-3 mb-0 reg-word">
+                      No. Rekening 901903534145
+                    </p>
+                    <p class="card-text reg-word">a.n Reza Fauzi Baharsyah</p>
+                    <!-- no rekening -->
+                    <button class="btn btn-light btn-sm rounded-2 confetti-button" data-nomer="901903534145"
+                      onclick="util.salin(this)" autofocus>
+                      Salin
+                    </button>
+                  </div>
+                  <div class="col-5 card-body border rounded-4 shadow p-3 m-3">
+                    <img src="./assets/images/bri.jpg" class="img-fluid w-80 rounded-3" alt="bca" />
+                    <p class="card-text mt-3 mb-0" style="font-size: 0.9rem">
+                      No. Rekening 414301039625530
+                    </p>
+                    <p class="card-text" style="font-size: 0.9rem">
+                      a.n Nurkhasanah
+                    </p>
+                    <!-- no rekening -->
+                    <button class="btn btn-light btn-sm rounded-2 confetti-button" data-nomer="414301039625530"
+                      onclick="util.salin(this)" autofocus>
+                      Salin
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <p class="mb-1 reg-word" style="font-size: 1.2rem">
+                atau dapat mengirim paket ke alamat berikut :
+              </p>
+              <p class="mb-1 reg-word">Blok 5 RT. 022 RW. 008 Desa Panguragan,
+                Kec. Panguragan, Kab. Cirebon, Jawa Barat</p>
+            </div>
           </div>
-        </div>
-      </div>
+        </section>
+
+        <!-- Ucapan -->
+        <section class="m-0 p-0 swiper-slide" id="ucapan">
+          <div class="container">
+            <div class="card-body border rounded-4 shadow p-3">
+              <h1 class="font-esthetic text-center mb-3" style="font-size: 3rem">
+                Ucapan & Doa
+              </h1>
+              <div class="mb-1" id="balasan"></div>
+
+              <div class="mb-3">
+                <label for="form-nama" class="form-label">Nama</label>
+                <input type="text" class="form-control shadow-sm" id="form-name" placeholder="Isikan Nama Anda" />
+              </div>
+              <div class="mb-3">
+                <label for="form-kehadiran" class="form-label" id="label-kehadiran">Kehadiran</label>
+                <select class="form-select shadow-sm" id="form-attend">
+                  <option value="0" selected>Konfirmasi Kehadiran</option>
+                  <option value="1">Hadir</option>
+                  <option value="2">Berhalangan</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="form-pesan" class="form-label">Ucapan & Doa</label>
+                <textarea class="form-control shadow-sm" id="form-message" rows="4"
+                  placeholder="Tulis Ucapan & Doa"></textarea>
+              </div>
+              <div class="d-flex">
+                <button class="flex-fill btn btn-light btn-sm rounded-3 shadow m-1 confetti-button white-object"
+                  id="send-msg">
+                  Kirim<i class="fa-solid fa-paper-plane ms-1 white-object"></i>
+                </button>
+              </div>
+            </div>
+            <div class="rounded-4 mt-4 mb-2">
+              <h2 class="gl-t">Guest List</h2>
+
+              <!-- PESAN -->
+              <div class="mb-3 d-flex justify-content-center">
+                <div class="bg-light shadow p-3 m-0 rounded-4 gslc w-100" id="guest-list-container">
+                </div>
+              </div>
+            </div>
+            <nav class="d-flex justify-content-center mb-0">
+              <ul class="pagination mb-0">
+                <li class="page-item" id="previous">
+                  <button class="page-link white-object" aria-label="Sebelumnya">
+                    <i class="fa-solid fa-circle-left me-1"></i>Sebelumnya
+                  </button>
+                </li>
+                <li class="page-item disabled">
+                  <span class="page-link text-light" id="page">1</span>
+                </li>
+                <li class="page-item" id="next">
+                  <button class="page-link white-object" aria-label="Selanjutnya">
+                    Selanjutnya<i class="fa-solid fa-circle-right ms-1"></i>
+                  </button>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+        <!-- Footer Undangan -->
+        <footer class="swiper-slide">
+          <div class="container">
+            <div class="text-center white-object">
+              <p style="font-size: 0.9rem" class="pt-2 pb-1 px-2">
+                Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila, Bapak
+                / Ibu / Saudara / i. berkenan hadir untuk memberikan do'a restunya
+                kami ucapkan terimakasih.
+              </p>
+              <h1 class="font-esthetic">
+                Wassalamualaikum Warahmatullahi Wabarakatuh
+              </h1>
+              <h1 class="font-arabic py-4 px-2" style="font-size: 2rem">
+                اَلْحَمْدُ لِلّٰهِ رَبِّ الْعٰلَمِيْنَۙ
+              </h1>
+              <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                <div class="col-auto">
+                  <small class="text-light">
+                    Build with<i class="fa-solid fa-heart mx-1 pink-object"></i>Reza
+                    F Baharsyah
+                  </small>
+                </div>
+                <div class="col-auto">
+                  <small>
+                    <i class="fa-brands fa-instagram me-1"></i><a target="instagram"
+                      href="https://www.instagram.com/rezafbaharsyah/"
+                      class="text-decoration-none pink-object">rezafbaharsyah</a>
+                  </small>
+                </div>
+              </div>
+            </div>
+            <img class="animate__animated animate__pulse animate__infinite" src="./assets/images/welcome/lb.webp"
+              alt="frame" style="
+        position: absolute;
+        bottom: 0;   
+        left: 0;        
+        width: 180px;  
+        z-index: 0; 
+        width: 180px;
+        opacity: 0.8;  
+        pointer-events: none;">
+
+            <img class="animate__animated animate__pulse animate__infinite" src="./assets/images/welcome/rb.webp"
+              alt="frame" style="
+        position: absolute;
+        bottom: 0;   
+        right: 0;        
+        width: 180px;  
+        z-index: 0; 
+        width: 180px; 
+        opacity: 0.8; 
+        pointer-events: none;">
+
+    <div style="
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        pointer-events: none;
+        z-index: 0;">
+
+      <img src="./assets/images/welcome/mt.webp" alt="frame" class="animate__animated animate__pulse animate__infinite"
+        style="
+                width: 200px; 
+                max-width: 80vw;
+                height: auto;
+                opacity: 0.9;
+                pointer-events: none;">
     </div>
-  </footer>
+
+          </div>
+        </footer>
+      </div> <!-- Close swiper-wrapper -->
+      <div class="swiper-pagination"></div>
+    </div> <!-- Close swiper -->
+  </main>
 
   <!-- Modal Foto Large -->
   <div class="modal fade" id="modal-image" tabindex="-1" aria-hidden="true">
@@ -651,6 +713,7 @@
     integrity="sha256-XG5M9shcLLpu8ct5bVbu6lLVzLpfZChl+csxdyLVP18=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js" crossorigin="anonymous"
     referrerpolicy="no-referrer"></script>
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>
-
 </html>

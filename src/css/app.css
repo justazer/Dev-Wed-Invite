@@ -5,9 +5,15 @@
   --white: #ffffff;
   --blue: #1310aa;
   --pink: #ff0081;
+  --gold: #D4AF37;
   --light-brown: #e3d4c3;
   --dark-brown: #d5c2b0;
   --very-dark-brown: #7d5b4d;
+
+  /* Font */
+  --font-script: "Great Vibes", cursive;
+  /* --font-body: "Work Sans", sans-serif; */
+  --font-body: "Josefin Sans", sans-serif;
 }
 
 .animate-low {
@@ -16,17 +22,77 @@
 
 html {
   scroll-behavior: smooth !important;
+  overflow: hidden;
 }
 
 body {
-  font-family: "Josefin Sans", sans-serif !important;
-  padding: 0 !important;
-  -ms-overflow-style: none !important;
-  scrollbar-width: none !important;
+    font-family: var(--font-body) !important;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../assets/images/welcome/bgl.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--text-color);
+    line-height: 1.3;
+    overflow-x: hidden;
+}
+
+.paragraf {
+    line-height: 1.8;
+}
+
+/* Swiper Styles */
+.swiper {
+  width: 100%;
+  height: 100vh;
+}
+
+.swiper-slide {
+  height: 100vh;
+  overflow-y: auto;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 80px; /* Space for bottom nav */
+  background: transparent;
+}
+
+.swiper, .swiper-slide {
+  background: transparent !important;
+}
+
+.swiper-slide > .container {
+  width: 100%;
+}
+
+/* Ensure background remains static */
+.swiper-wrapper {
+  background-image: inherit;
+  background-size: inherit;
+  background-position: inherit;
+  background-attachment: inherit;
+}
+
+.swiper-pagination-bullet {
+  background: var(--white) !important;
+  opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--gold) !important;
+  opacity: 1;
+}
+
+.swiper-pagination {
+  display: none !important;
 }
 
 body::-webkit-scrollbar {
   display: none !important;
+}
+
+.gold {
+  color: var(--gold) !important;
 }
 
 .gslc {
@@ -50,11 +116,17 @@ body::-webkit-scrollbar {
 }
 
 .main-nav {
-  background-color: var(--light-brown)
+  /* background-color: var(--light-brown) */
+  background: transparent;
 }
 
 .font-esthetic {
   font-family: "Cookie", cursive !important;
+  color: var(--white) !important;
+}
+
+.font-aesthetic {
+  font-family: var(--font-script) !important;
   color: var(--white) !important;
 }
 
@@ -166,15 +238,13 @@ body::-webkit-scrollbar {
 }
 
 .dark-section {
-  background-color: var(--very-dark-brown);
-  margin-top: -0.5rem;
-  margin-bottom: -0.5rem;
+  background: transparent;
+  width: 100%;
 }
 
 footer {
-  background-color: var(--very-dark-brown) !important;
-  margin-top: -0.5rem;
-  padding-bottom: 5rem;
+  background: transparent !important;
+  width: 100%;
 }
 
 .pink-object {
@@ -201,6 +271,10 @@ footer {
   color: var(--white) !important;
 }
 
+.bottom-nav .nav-link.active .brown-obj {
+  color: var(--white) !important;
+}
+
 .wave-separator {
   fill: var(--very-dark-brown) !important;
   fill-opacity: 1;
@@ -220,7 +294,7 @@ footer {
   display: inline-block;
   -webkit-appearance: none;
   appearance: none;
-  background-color: var(--white);
+  background-color: var(--gold);
   border: none;
   cursor: pointer;
   position: relative;

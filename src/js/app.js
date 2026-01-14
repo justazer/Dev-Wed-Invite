@@ -27,6 +27,8 @@ const prevButton = document.getElementById("previous");
 const nextButton = document.getElementById("next");
 const pageNumber = document.getElementById("page");
 
+let swiperInstance;
+
 // Utily
 const util = (() => {
   const opacity = (nama) => {
@@ -130,7 +132,6 @@ const util = (() => {
   };
 
   //COMMENT
-
   let GUEST_DATA = [];
 
   async function getListMessage() {
@@ -217,7 +218,6 @@ const util = (() => {
   }
 
   //ANIMATION
-
   const animation = async () => {
     const duration = 10 * 1000;
     const animationEnd = Date.now() + duration;
@@ -256,12 +256,105 @@ const util = (() => {
 
   const open = async (button) => {
     button.disabled = true;
-    document.querySelector("body").style.overflowY = "scroll";
-    AOS.init();
+    document.querySelector("body").style.overflowY = "hidden";
     audio.play();
     opacity("welcome");
     document.getElementById("music-button").style.display = "block";
     timer();
+
+    // Initialize Swiper
+    swiperInstance = new Swiper(".mySwiper", {
+      direction: "vertical",
+      mousewheel: {
+        thresholdDelta: 50,
+        sensitivity: 1,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      on: {
+        slideChange: function () {
+          // Update active nav link
+          const index = this.activeIndex;
+          const navLinks = document.querySelectorAll('.bottom-nav .nav-link');
+
+          // Map slides to nav indices
+          const slideToNavMap = {
+            0: 0, // Home
+            1: 1, // Firman Allah
+            2: 1, // Mempelai -> Firman Allah
+            3: 2, // Tanggal
+            4: 3, // Galeri
+            5: 4, // Gift
+            6: 5, // Ucapan
+            7: 5  // Footer -> Ucapan
+          };
+
+          const navIndex = slideToNavMap[index];
+
+          navLinks.forEach((link, i) => {
+            if (i === navIndex) link.classList.add('active');
+            else link.classList.remove('active');
+          });
+        },
+        touchStart: function (e) {
+          this.touchStartX = e.touches[0].clientX;
+          this.touchStartY = e.touches[0].clientY;
+        },
+        touchEnd: function (e) {
+          if (!this.touchStartX || !this.touchStartY) return;
+
+          const touchEndX = e.changedTouches[0].clientX;
+          const touchEndY = e.changedTouches[0].clientY;
+
+          const diffX = this.touchStartX - touchEndX;
+          const diffY = this.touchStartY - touchEndY;
+
+          // Check if the touch target is inside the gallery carousel
+          const isGallery = e.target.closest('#carousel-foto-satu');
+          if (isGallery) return;
+
+          // Threshold to detect as horizontal swipe (e.g., 50px)
+          const threshold = 50;
+
+          // Check if it's more of a horizontal movement than vertical
+          if (Math.abs(diffX) > Math.abs(diffY)) {
+            if (diffX > threshold) {
+              // Swipe Right to Left -> Next Slide
+              this.slideNext();
+            } else if (diffX < -threshold) {
+              // Swipe Left to Right -> Previous Slide
+              this.slidePrev();
+            }
+          }
+
+          this.touchStartX = null;
+          this.touchStartY = null;
+        }
+      }
+    });
+
+    // Update Bottom Nav to use Swiper
+    const navIndices = {
+      '#home': 0,
+      '#mempelai': 1,
+      '#tanggal': 3,
+      '#galeri': 4,
+      '#gift': 5,
+      '#ucapan': 6
+    };
+
+    document.querySelectorAll('.bottom-nav a').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = this.getAttribute('href');
+        const slideIndex = navIndices[target];
+        if (slideIndex !== undefined && swiperInstance) {
+          swiperInstance.slideTo(slideIndex);
+        }
+      });
+    });
 
     await confetti({
       origin: { y: 0.8 },
@@ -271,18 +364,18 @@ const util = (() => {
     await animation();
 
     // Full Screen
-    const docElm = document.documentElement;
+    // const docElm = document.documentElement;
 
     // Reques Fullscreen Mode
-    if (docElm.requestFullscreen) {
-      docElm.requestFullscreen();
-    } else if (docElm.mozRequestFullScreen) { /* Firefox */
-      docElm.mozRequestFullScreen();
-    } else if (docElm.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
-      docElm.webkitRequestFullscreen();
-    } else if (docElm.msRequestFullscreen) { /* IE/Edge */
-      docElm.msRequestFullscreen();
-    }
+    // if (docElm.requestFullscreen) {
+    //   docElm.requestFullscreen();
+    // } else if (docElm.mozRequestFullScreen) { /* Firefox */
+    //   docElm.mozRequestFullScreen();
+    // } else if (docElm.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+    //   docElm.webkitRequestFullscreen();
+    // } else if (docElm.msRequestFullscreen) { /* IE/Edge */
+    //   docElm.msRequestFullscreen();
+    // }
 
     // Remove Overlay
     // document.getElementById('overlay').style.display = "none";
