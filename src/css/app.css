@@ -120,6 +120,11 @@ body::-webkit-scrollbar {
   background: transparent;
 }
 
+.font-salam {
+  font-family: "Cookie", cursive !important;
+  color: var(--white) !important;
+}
+
 .font-esthetic {
   font-family: "Cookie", cursive !important;
   color: var(--white) !important;
@@ -141,6 +146,16 @@ body::-webkit-scrollbar {
   position: relative;
   overflow: hidden;
   border-radius: 50%;
+  margin: 0 auto;
+}
+
+.img-wrapper {
+  position: relative;
+  width: fit-content;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .img-crop > img {
@@ -148,6 +163,7 @@ body::-webkit-scrollbar {
   margin: 0 auto;
   height: 100%;
   width: 100%;
+  object-fit: cover;
 }
 
 .btn-music {
@@ -174,11 +190,11 @@ body::-webkit-scrollbar {
 
 .img-border-overlay-frame {
   position: absolute;
-  top: 60%;
-  left: 51%;
-  transform: translate(-50%, -50%); /* Menjaga gambar tetap di tengah */
-  width: 120% !important;
-  height: 120% !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%); /* Menjaga gambar tetap di tengah */
+  width: 121% !important;
+  height: 121% !important;
   z-index: 10;        /* Memastikan ini di lapisan atas */
   pointer-events: none; /* Opsional: agar klik tembus ke gambar di bawahnya */
 }
@@ -249,6 +265,68 @@ footer {
 
 .pink-object {
   color: var(--pink) !important;
+}
+
+/* Floral Decorations */
+.flower-deco {
+  position: absolute;
+  z-index: 0;
+  opacity: 0.8;
+  pointer-events: none;
+  width: 180px;
+  max-width: 40vw;
+}
+
+.flower-lt { top: 0; left: 0; }
+.flower-rt { top: 0; right: 0; }
+.flower-lb { bottom: 0; left: 0; }
+.flower-rb { bottom: 0; right: 0; }
+
+.flower-mt {
+  width: 200px;
+  max-width: 80vw;
+  height: auto;
+  opacity: 0.9;
+}
+
+.flower-mt-wrapper {
+  position: absolute;
+  top: 0;
+  left: 12px;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (max-width: 576px) {
+  .flower-deco {
+    width: 120px;
+  }
+  .flower-mt {
+    width: 150px;
+  }
+}
+
+/* Bank Logos */
+.bank-logo {
+  max-width: 7rem;
+  width: 100%;
+  height: auto;
+  border-radius: 0.8rem;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Countdown */
+.time-f {
+  font-size: 1.5rem !important;
+  font-weight: bold;
+}
+
+.time-ff {
+  font-size: 0.8rem !important;
 }
 
 .white-object {
@@ -392,23 +470,34 @@ footer {
 
 /* Responsive Scaling for Mobile */
 @media (max-width: 576px) {
+  .font-salam {
+    font-size: 1.5rem !important;
+  }
   .font-esthetic {
-    font-size: 2.2rem !important;
+    font-size: 2rem !important;
   }
   .font-aesthetic {
-    font-size: 1.8rem !important;
+    font-size: 1.6rem !important;
   }
   .font-arabic {
-    font-size: 1.5rem !important;
+    font-size: 1.4rem !important;
+  }
+  .time-f {
+    font-size: 1.2rem !important;
+  }
+  .time-ff {
+    font-size: 0.7rem !important;
   }
   .img-crop {
     width: 10rem;
     height: 10rem;
   }
-  .img-border-overlay-frame {
+  
+  /* .img-border-overlay-frame {
     width: 110% !important;
     height: 110% !important;
-  }
+  } */
+
   h1 {
     font-size: 2rem !important;
   }

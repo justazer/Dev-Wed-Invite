@@ -72,78 +72,42 @@
   <script src="./js/app.js" defer></script>
 </head>
 
-<!-- <body
-    data-email="user@example.com"
-    data-password="12345678"
-    data-url="https://arulajeh.my.id/api/greetings"
-    style="overflow-y: hidden"
-  > -->
-
 <body>
   <!-- Welcome Page -->
   <div class="loading-page" id="welcome"
     style="
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./assets/images/welcome/bgl.webp');">
 
-    <img class="animate__animated animate__pulse animate__infinite" src="./assets/images/welcome/lb.webp" alt="frame"
-      style="
-        position: absolute;
-        bottom: 0;   
-        left: 0;        
-        width: 180px;  
-        z-index: 0; 
-        width: 180px;
-        opacity: 0.8;  
-        pointer-events: none;">
+    <img class="flower-deco flower-lb animate__animated animate__pulse animate__infinite"
+      src="./assets/images/welcome/lb.webp" alt="frame">
+    <img class="flower-deco flower-rb animate__animated animate__pulse animate__infinite"
+      src="./assets/images/welcome/rb.webp" alt="frame">
 
-    <img class="animate__animated animate__pulse animate__infinite" src="./assets/images/welcome/rb.webp" alt="frame"
-      style="
-        position: absolute;
-        bottom: 0;   
-        right: 0;        
-        width: 180px;  
-        z-index: 0; 
-        width: 180px; 
-        opacity: 0.8; 
-        pointer-events: none;">
-
-    <div style="
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        display: flex;
-        justify-content: center;
-        pointer-events: none;
-        z-index: 0;">
-
-      <img src="./assets/images/welcome/mt.webp" alt="frame" class="animate__animated animate__pulse animate__infinite"
-        style="
-                width: 200px; 
-                max-width: 80vw;
-                height: auto;
-                opacity: 0.9;
-                pointer-events: none;">
+    <div class="flower-mt-wrapper">
+      <img src="./assets/images/welcome/mt.webp" alt="frame"
+        class="flower-deco flower-mt animate__animated animate__pulse animate__infinite">
     </div>
     <div class="d-flex justify-content-center align-items-center" style="height: 100vh !important">
       <div class="text-center">
         <h1 class="font-esthetic mb-4">
           The Wedding Of
         </h1>
-        <div class="img-crop animate__animated animate__heartBeat animate__infinite animate-low">
+        <div class="img-wrapper animate__animated animate__heartBeat animate__infinite animate-low">
           <img src="./assets/images/welcome/mid-frm.webp" alt="border" class="img-border-overlay-frame" />
-          <img src="./assets/images/bg.jpg" alt="bg" />
+          <div class="img-crop mx-auto">
+            <img src="./assets/images/bg.jpg" alt="bg" />
+          </div>
         </div>
-        <h1 class="font-esthetic my-4">
+        <h1 class="font-esthetic my-4 mt-5">
           Assa & Reza
         </h1>
-        <h8 class="white-object">Kepada Yth:<br>Bapak/Ibu/Saudara/i</br></h8>
+        <p class="white-object">Kepada Yth:<br>Bapak/Ibu/Saudara/i</p>
         <br>
         <h5>
           <div id="guest-name" class="white-object"></div>
         </h5>
         </br>
-        <button type="button" class="white-object confetti-button btn btn-light shadow rounded-4 mt-4"
+        <button type="button" class="white-object confetti-button btn btn-light shadow rounded-4"
           onclick="util.open(this)">
           <i class="white-object fa-solid fa-envelope-open me-2"></i>Buka Undangan
         </button>
@@ -229,16 +193,16 @@
         <!-- Home -->
         <section class="container swiper-slide" id="home">
           <div class="text-center pt-4">
-            <h1 class="font-aesthetic my-4">
+            <h1 class="font-esthetic my-4">
               The Wedding Of
             </h1>
-            <div class="py-4 d-flex justify-content-center align-items-center">
-              <div class="img-crop">
-                <img src="./assets/images/welcome/mid-frm.webp" alt="border" class="img-border-overlay-frame" />
-                <img src="./assets/images/bg.jpg" alt="bg" onclick="util.modal(this)" />
+            <div class="img-wrapper animate__animated animate__heartBeat animate__infinite animate-low">
+              <img src="./assets/images/welcome/mid-frm.webp" alt="border" class="img-border-overlay-frame" />
+              <div class="img-crop mx-auto">
+                <img src="./assets/images/bg.jpg" alt="bg" />
               </div>
             </div>
-            <h1 class="font-esthetic my-4">
+            <h1 class="font-esthetic my-4 mt-5">
               Assa & Reza
             </h1>
             <p class="mb-0">Ahad, 1 Februari 2026</p>
@@ -248,6 +212,14 @@
               </div>
             </div>
             <p class="m-0">Scroll Down</p>
+            <img class="flower-deco flower-lb animate__animated animate__pulse animate__infinite"
+              src="./assets/images/welcome/lb.webp" alt="frame">
+            <img class="flower-deco flower-rb animate__animated animate__pulse animate__infinite"
+              src="./assets/images/welcome/rb.webp" alt="frame">
+            <img class="flower-deco flower-lt animate__animated animate__pulse animate__infinite"
+              src="./assets/images/welcome/lt.webp" alt="frame">
+            <img class="flower-deco flower-rt animate__animated animate__pulse animate__infinite"
+              src="./assets/images/welcome/rt.webp" alt="frame">
           </div>
         </section>
 
@@ -255,7 +227,7 @@
         <section class="swiper-slide">
           <div class="container">
             <div class="text-center">
-              <h1 class="font-esthetic mt-0 mb-3">
+              <h1 class="font-salam mt-0 mb-3">
                 Allah Subhanahu Wa Ta'ala berfirman
               </h1>
               <p class="px-2 paragraf">
@@ -267,49 +239,14 @@
               </p>
               <span class="mb-0"><strong>QS. Ar-Rum Ayat 21</strong></span>
             </div>
-            <img class="animate__animated animate__pulse animate__infinite" src="./assets/images/welcome/lb.webp"
-              alt="frame" style="
-        position: absolute;
-        bottom: 0;   
-        left: 0;        
-        width: 180px;  
-        z-index: 0; 
-        width: 180px;
-        opacity: 0.8;  
-        pointer-events: none;">
-
-            <img class="animate__animated animate__pulse animate__infinite" src="./assets/images/welcome/rb.webp"
-              alt="frame" style="
-        position: absolute;
-        bottom: 0;   
-        right: 0;        
-        width: 180px;  
-        z-index: 0; 
-        width: 180px; 
-        opacity: 0.8; 
-        pointer-events: none;">
-
-            <img class="animate__animated animate__pulse animate__infinite" src="./assets/images/welcome/lt.webp"
-              alt="frame" style="
-        position: absolute;
-        top: 0;   
-        left: 0;        
-        width: 180px;  
-        z-index: 0; 
-        width: 180px;
-        opacity: 0.8;  
-        pointer-events: none;">
-
-            <img class="animate__animated animate__pulse animate__infinite" src="./assets/images/welcome/rt.webp"
-              alt="frame" style="
-        position: absolute;
-        top: 0;   
-        right: 0;        
-        width: 180px;  
-        z-index: 0; 
-        width: 180px; 
-        opacity: 0.8; 
-        pointer-events: none;">
+            <img class="flower-deco flower-lb animate__animated animate__pulse animate__infinite"
+              src="./assets/images/welcome/lb.webp" alt="frame">
+            <img class="flower-deco flower-rb animate__animated animate__pulse animate__infinite"
+              src="./assets/images/welcome/rb.webp" alt="frame">
+            <img class="flower-deco flower-lt animate__animated animate__pulse animate__infinite"
+              src="./assets/images/welcome/lt.webp" alt="frame">
+            <img class="flower-deco flower-rt animate__animated animate__pulse animate__infinite"
+              src="./assets/images/welcome/rt.webp" alt="frame">
           </div>
         </section>
 
@@ -319,15 +256,13 @@
             <h1 class="font-arabic py-4 px-2">
               بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ
             </h1>
-            <h1 class="font-esthetic px-2">
+            <h1 class="font-salam px-2">
               Assalamualaikum Warahmatullahi Wabarakatuh
             </h1>
-
             <p class="px-3">
               Tanpa mengurangi rasa hormat. Kami mengundang Bapak/Ibu/Saudara/i
               serta kerabat sekalian untuk menghadiri acara pernikahan kami:
             </p>
-
             <div class="overflow-x-hidden">
               <div class="img-crop mx-auto">
                 <img src="./assets/images/mempelai.webp" alt="cowo" onclick="util.modal(this)" />
@@ -338,18 +273,22 @@
               <p class="mb-0">Putra</p>
               <p class="mb-0">Bpk. Bambang Eddy S. & Ibu Munawaroh</p>
             </div>
-            <h1 class="font-esthetic">
-              &
-            </h1>
+            <h1 class="font-esthetic">&</h1>
             <div>
               <h1 class="font-esthetic">Nurkhasanah</h1>
               <p class="mb-0">Putri</p>
               <p class="mb-0">Bpk. Sa'ali & Ibu Kipah</p>
             </div>
+            <img class="flower-deco flower-lb animate__animated animate__pulse animate__infinite"
+              src="./assets/images/welcome/lb.webp" alt="frame">
+            <img class="flower-deco flower-rb animate__animated animate__pulse animate__infinite"
+              src="./assets/images/welcome/rb.webp" alt="frame">
+            <img class="flower-deco flower-lt animate__animated animate__pulse animate__infinite"
+              src="./assets/images/welcome/lt.webp" alt="frame">
+            <img class="flower-deco flower-rt animate__animated animate__pulse animate__infinite"
+              src="./assets/images/welcome/rt.webp" alt="frame">
           </div>
         </section>
-
-
 
         <!-- Tanggal -->
         <section class="dark-section swiper-slide" id="tanggal">
@@ -408,6 +347,10 @@
                 </div>
               </div>
             </div>
+            <img class="flower-deco flower-lb animate__animated animate__pulse animate__infinite"
+              src="./assets/images/welcome/lb.webp" alt="frame">
+            <img class="flower-deco flower-rb animate__animated animate__pulse animate__infinite"
+              src="./assets/images/welcome/rb.webp" alt="frame">
           </div>
         </section>
 
@@ -454,49 +397,14 @@
                 </button>
               </div>
             </div>
-            <img class="animate__animated animate__pulse animate__infinite" src="./assets/images/welcome/lb.webp"
-              alt="frame" style="
-        position: absolute;
-        bottom: 0;   
-        left: 0;        
-        width: 180px;  
-        z-index: 0; 
-        width: 180px;
-        opacity: 0.8;  
-        pointer-events: none;">
-
-            <img class="animate__animated animate__pulse animate__infinite" src="./assets/images/welcome/rb.webp"
-              alt="frame" style="
-        position: absolute;
-        bottom: 0;   
-        right: 0;        
-        width: 180px;  
-        z-index: 0; 
-        width: 180px; 
-        opacity: 0.8; 
-        pointer-events: none;">
-
-            <img class="animate__animated animate__pulse animate__infinite" src="./assets/images/welcome/lt.webp"
-              alt="frame" style="
-        position: absolute;
-        top: 0;   
-        left: 0;        
-        width: 180px;  
-        z-index: 0; 
-        width: 180px;
-        opacity: 0.8;  
-        pointer-events: none;">
-
-            <img class="animate__animated animate__pulse animate__infinite" src="./assets/images/welcome/rt.webp"
-              alt="frame" style="
-        position: absolute;
-        top: 0;   
-        right: 0;        
-        width: 180px;  
-        z-index: 0; 
-        width: 180px; 
-        opacity: 0.8; 
-        pointer-events: none;">
+            <img class="flower-deco flower-lb animate__animated animate__pulse animate__infinite"
+              src="./assets/images/welcome/lb.webp" alt="frame">
+            <img class="flower-deco flower-rb animate__animated animate__pulse animate__infinite"
+              src="./assets/images/welcome/rb.webp" alt="frame">
+            <img class="flower-deco flower-lt animate__animated animate__pulse animate__infinite"
+              src="./assets/images/welcome/lt.webp" alt="frame">
+            <img class="flower-deco flower-rt animate__animated animate__pulse animate__infinite"
+              src="./assets/images/welcome/rt.webp" alt="frame">
           </div>
         </section>
 
@@ -513,8 +421,8 @@
               </p>
               <div class="overflow-x-hidden">
                 <div class="row justify-content-center">
-                  <div class="col-10 col-md-5 card-body border rounded-4 shadow p-3 m-2">
-                    <img src="./assets/images/sb.jpg" class="img-fluid w-80 rounded-3" alt="gojek" />
+                  <div class="col-10 col-md-5 card-body border rounded-4 shadow p-3 m-3">
+                    <img src="./assets/images/sb.jpg" class="img-fluid bank-logo" alt="gojek" />
                     <p class="card-text mt-3 mb-0 reg-word">
                       No. Rekening 901903534145
                     </p>
@@ -526,7 +434,7 @@
                     </button>
                   </div>
                   <div class="col-5 card-body border rounded-4 shadow p-3 m-3">
-                    <img src="./assets/images/bri.jpg" class="img-fluid w-80 rounded-3" alt="bca" />
+                    <img src="./assets/images/bri.jpg" class="img-fluid bank-logo" alt="bca" />
                     <p class="card-text mt-3 mb-0" style="font-size: 0.9rem">
                       No. Rekening 414301039625530
                     </p>
@@ -541,11 +449,15 @@
                   </div>
                 </div>
               </div>
-              <p class="mb-1 reg-word" style="font-size: 1.2rem">
-                atau dapat mengirim paket ke alamat berikut :
+              <p class="mb-1 reg-word">
+                Atau dapat mengirim paket ke alamat berikut :
               </p>
               <p class="mb-1 reg-word">Blok 5 RT. 022 RW. 008 Desa Panguragan,
                 Kec. Panguragan, Kab. Cirebon, Jawa Barat</p>
+              <img class="flower-deco flower-lb animate__animated animate__pulse animate__infinite"
+                src="./assets/images/welcome/lb.webp" alt="frame">
+              <img class="flower-deco flower-rb animate__animated animate__pulse animate__infinite"
+                src="./assets/images/welcome/rb.webp" alt="frame">
             </div>
           </div>
         </section>
@@ -554,16 +466,15 @@
         <section class="m-0 p-0 swiper-slide" id="ucapan">
           <div class="container">
             <div class="card-body border rounded-4 shadow p-3">
-              <h1 class="font-esthetic text-center mb-3">
+              <h1 class="font-esthetic text-center mb-1">
                 Ucapan & Doa
               </h1>
-              <div class="mb-1" id="balasan"></div>
-
-              <div class="mb-3">
+              <div class="mb-2" id="balasan"></div>
+              <div class="mb-2">
                 <label for="form-nama" class="form-label">Nama</label>
                 <input type="text" class="form-control shadow-sm" id="form-name" placeholder="Isikan Nama Anda" />
               </div>
-              <div class="mb-3">
+              <div class="mb-2">
                 <label for="form-kehadiran" class="form-label" id="label-kehadiran">Kehadiran</label>
                 <select class="form-select shadow-sm" id="form-attend">
                   <option value="0" selected>Konfirmasi Kehadiran</option>
@@ -571,20 +482,19 @@
                   <option value="2">Berhalangan</option>
                 </select>
               </div>
-              <div class="mb-3">
+              <div class="mb-2">
                 <label for="form-pesan" class="form-label">Ucapan & Doa</label>
-                <textarea class="form-control shadow-sm" id="form-message" rows="4"
+                <textarea class="form-control shadow-sm" id="form-message" rows="2"
                   placeholder="Tulis Ucapan & Doa"></textarea>
               </div>
               <div class="d-flex">
-                <button class="flex-fill btn btn-light btn-sm rounded-3 shadow m-1 confetti-button white-object"
-                  id="send-msg">
-                  Kirim<i class="fa-solid fa-paper-plane ms-1 white-object"></i>
+                <button class="flex-fill btn btn-secondary btn-sm rounded-3 shadow m-1 confetti-button white-object"
+                  id="send-msg">Kirim<i class="fa-solid fa-paper-plane ms-1 white-object"></i>
                 </button>
               </div>
             </div>
             <div class="rounded-4 mt-4 mb-2">
-              <h2 class="gl-t">Guest List</h2>
+              <h2 class="font-esthetic gl-t">Guest List</h2>
 
               <!-- PESAN -->
               <div class="mb-3 d-flex justify-content-center">
@@ -596,7 +506,7 @@
               <ul class="pagination mb-0">
                 <li class="page-item" id="previous">
                   <button class="page-link white-object" aria-label="Sebelumnya">
-                    <i class="fa-solid fa-circle-left me-1"></i>Sebelumnya
+                    <i class="fa-solid fa-circle-left me-1"></i>Back
                   </button>
                 </li>
                 <li class="page-item disabled">
@@ -604,11 +514,15 @@
                 </li>
                 <li class="page-item" id="next">
                   <button class="page-link white-object" aria-label="Selanjutnya">
-                    Selanjutnya<i class="fa-solid fa-circle-right ms-1"></i>
+                    Next<i class="fa-solid fa-circle-right ms-1"></i>
                   </button>
                 </li>
               </ul>
             </nav>
+            <img class="flower-deco flower-lt animate__animated animate__pulse animate__infinite"
+              src="./assets/images/welcome/lt.webp" alt="frame">
+            <img class="flower-deco flower-rt animate__animated animate__pulse animate__infinite"
+              src="./assets/images/welcome/rt.webp" alt="frame">
           </div>
         </section>
 
@@ -643,47 +557,14 @@
                 </div>
               </div>
             </div>
-            <img class="animate__animated animate__pulse animate__infinite" src="./assets/images/welcome/lb.webp"
-              alt="frame" style="
-        position: absolute;
-        bottom: 0;   
-        left: 0;        
-        width: 180px;  
-        z-index: 0; 
-        width: 180px;
-        opacity: 0.8;  
-        pointer-events: none;">
-
-            <img class="animate__animated animate__pulse animate__infinite" src="./assets/images/welcome/rb.webp"
-              alt="frame" style="
-        position: absolute;
-        bottom: 0;   
-        right: 0;        
-        width: 180px;  
-        z-index: 0; 
-        width: 180px; 
-        opacity: 0.8; 
-        pointer-events: none;">
-
-            <div style="
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        display: flex;
-        justify-content: center;
-        pointer-events: none;
-        z-index: 0;">
-
-              <img src="./assets/images/welcome/mt.webp" alt="frame"
-                class="animate__animated animate__pulse animate__infinite" style="
-                width: 200px; 
-                max-width: 80vw;
-                height: auto;
-                opacity: 0.9;
-                pointer-events: none;">
-            </div>
-
+            <img class="flower-deco flower-lb animate__animated animate__pulse animate__infinite"
+              src="./assets/images/welcome/lb.webp" alt="frame">
+            <img class="flower-deco flower-rb animate__animated animate__pulse animate__infinite"
+              src="./assets/images/welcome/rb.webp" alt="frame">
+            <img class="flower-deco flower-lt animate__animated animate__pulse animate__infinite"
+              src="./assets/images/welcome/lt.webp" alt="frame">
+            <img class="flower-deco flower-rt animate__animated animate__pulse animate__infinite"
+              src="./assets/images/welcome/rt.webp" alt="frame">
           </div>
         </footer>
       </div> <!-- Close swiper-wrapper -->

@@ -63,6 +63,10 @@ const util = (() => {
   const tamu = urlParams.get('to');
   if (tamu) {
     document.getElementById('guest-name').innerText = tamu;
+    const formName = document.getElementById('form-name');
+    if (formName) {
+      formName.value = tamu;
+    }
   }
 
   // Copy Account Number Button
@@ -87,15 +91,20 @@ const util = (() => {
 
   // Countdown
   const timer = () => {
+    const timerElement = document.getElementById("tampilan-waktu");
     let countDownDate = new Date(
-      document
-        .getElementById("tampilan-waktu")
-        .getAttribute("time-data")
-        .replace(" ", "T")
+      timerElement.getAttribute("time-data").replace(" ", "T")
     ).getTime();
 
-    setInterval(() => {
-      let distance = Math.abs(countDownDate - new Date().getTime());
+    const x = setInterval(() => {
+      let now = new Date().getTime();
+      let distance = countDownDate - now;
+
+      if (distance < 0) {
+        clearInterval(x);
+        timerElement.innerHTML = `<h5 class="m-0 py-1">Acara Berlangsung</h5>`;
+        return;
+      }
 
       document.getElementById("hari").innerText = Math.floor(
         distance / (1000 * 60 * 60 * 24)
@@ -141,7 +150,7 @@ const util = (() => {
         redirect: "follow",
       };
       const response = await fetch(
-        `https://api-asarez.arulajeh.id/list?page=${pagination.page}&limit=10`,
+        `https://api-asarez.arulajeh.id/list?page=${pagination.page}&limit=1`,
         requestOptions
       )
         .then((response) => response.json())
@@ -172,7 +181,7 @@ const util = (() => {
     } else {
       nextButton.classList.remove("disabled");
     }
-    pageNumber.innerText = `Halaman ${pagination.page} dari ${pagination.total_page}`;
+    pageNumber.innerText = `Page ${pagination.page} of ${pagination.total_page}`;
 
     GUEST_DATA = guestList.map((item) => {
       return {
@@ -188,14 +197,13 @@ const util = (() => {
     container.innerHTML = "";
 
     // GUEST_DATA / API_URL
-    GUEST_DATA.forEach((item) => {
+    if (GUEST_DATA.length > 0) {
+      const item = GUEST_DATA[0];
       const messageCard = `
-            <div class="border-bottom pb-3 mb-3">
+            <div class="mb-0">
                 <div class="d-flex justify-content-between align-items-center mb-1">
-                    <span class="fw-bold text-truncate brown-object" style="max-width: 70%;">${item.nama
-        }</span>
-                    <span class="badge ${item.status === "Hadir" ? "bg-success" : "bg-secondary"
-        } small">
+                    <span class="fw-bold text-truncate brown-object" style="max-width: 70%;">${item.nama}</span>
+                    <span class="badge ${item.status === "Hadir" ? "bg-success" : "bg-secondary"} small">
                         ${item.status}
                     </span>
                 </div>
@@ -213,8 +221,10 @@ const util = (() => {
                 </div>
             </div>
         `;
-      container.innerHTML += messageCard;
-    });
+      container.innerHTML = messageCard;
+    } else {
+      container.innerHTML = `<div class="text-center text-muted">Belum ada ucapan</div>`;
+    }
   }
 
   //ANIMATION
@@ -348,7 +358,7 @@ const util = (() => {
     // Update Bottom Nav to use Swiper
     const navIndices = {
       '#home': 0,
-      '#mempelai': 1,
+      '#mempelai': 2,
       '#tanggal': 3,
       '#galeri': 4,
       '#gift': 5,
@@ -370,30 +380,11 @@ const util = (() => {
       origin: { y: 0.8 },
       zIndex: 1057,
     });
-    // await session.check();
     await animation();
-
-    // Full Screen
-    // const docElm = document.documentElement;
-
-    // Reques Fullscreen Mode
-    // if (docElm.requestFullscreen) {
-    //   docElm.requestFullscreen();
-    // } else if (docElm.mozRequestFullScreen) { /* Firefox */
-    //   docElm.mozRequestFullScreen();
-    // } else if (docElm.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
-    //   docElm.webkitRequestFullscreen();
-    // } else if (docElm.msRequestFullscreen) { /* IE/Edge */
-    //   docElm.msRequestFullscreen();
-    // }
-
-    // Remove Overlay
-    // document.getElementById('overlay').style.display = "none";
   };
 
   const show = () => {
     loadGuestMessages();
-    // tamu();
     opacity("loading");
     window.scrollTo(0, 1);
   };
@@ -586,4 +577,7 @@ document.addEventListener("DOMContentLoaded", () => {
   formMessage.addEventListener("keyup", () => {
     checkInput();
   });
+
+  // Initial check for autofilled name
+  checkInput();
 });
