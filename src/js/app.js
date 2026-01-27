@@ -207,15 +207,15 @@ const util = (() => {
                         ${item.status}
                     </span>
                 </div>
-                <div class="mb-2">
-                    <div class="p-2 bg-white rounded-3 border-start border-4 border-primary shadow-sm">
-                        <span style="font-style: italic; font-size: 0.9rem;" class="text-secondary brown-object">
+                <div class="mb-1">
+                    <div class="p-1 bg-white rounded-3 border-start border-primary shadow-sm">
+                        <span style="font-style: italic; font-size: 0.9rem;" class="text-secondary">
                             "${item.pesan}"
                         </span>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end">
-                    <span class="text-muted brown-object" style="font-size: 0.7rem;">
+                    <span class="text-muted brown-object" style="font-size: 0.6rem;">
                         ${item.waktu}
                     </span>
                 </div>
