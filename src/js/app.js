@@ -398,8 +398,26 @@ const util = (() => {
     opacity,
     show,
     loadGuestMessages,
+    checkFullscreen: () => {
+      if (
+        !document.fullscreenElement &&
+        !document.webkitFullscreenElement &&
+        !document.mozFullScreenElement &&
+        !document.msFullscreenElement
+      ) {
+        if (document.documentElement.requestFullscreen) {
+          document.documentElement.requestFullscreen().catch((err) => {
+            console.warn(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+          });
+        }
+      }
+    },
   };
 })();
+
+// Enforce Fullscreen on Interaction
+document.addEventListener("click", () => util.checkFullscreen());
+document.addEventListener("touchstart", () => util.checkFullscreen());
 
 // Loading Progress
 const progress = (() => {
